@@ -3783,15 +3783,14 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Sprite.Exps.Height,
-		C3.Plugins.Browser.Acts.Alert,
 		C3.Plugins.Json.Exps.Get,
+		C3.Plugins.Browser.Acts.Alert,
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Acts.SetDefaultColor,
 		C3.Plugins.AJAX.Cnds.OnComplete,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Browser.Acts.ConsoleLog,
-		C3.Plugins.Json.Cnds.CompareValue,
 		C3.Plugins.System.Cnds.Else
 	];
 };
