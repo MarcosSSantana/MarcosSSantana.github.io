@@ -3033,8 +3033,8 @@ this._gpuTimeStartFrame=this._gpuTimeEndFrame;this._gpuTimeEndFrame=0}_AddWebGPU
 resolve});return this._snapshotPromise}_MaybeTakeSnapshot(){if(!this._snapshotFormat)return;let canvas=this._canvas;const snapArea=this._snapshotArea;const x=C3.clamp(Math.floor(snapArea.getLeft()),0,canvas.width);const y=C3.clamp(Math.floor(snapArea.getTop()),0,canvas.height);let w=snapArea.width();if(w===0)w=canvas.width-x;else w=C3.clamp(Math.floor(w),0,canvas.width-x);let h=snapArea.height();if(h===0)h=canvas.height-y;else h=C3.clamp(Math.floor(h),0,canvas.height-y);if((x!==0||y!==0||w!==canvas.width||
 h!==canvas.height)&&(w>0&&h>0)){canvas=C3.CreateCanvas(w,h);const ctx=canvas.getContext("2d");ctx.drawImage(this._canvas,x,y,w,h,0,0,w,h)}C3.CanvasToBlob(canvas,this._snapshotFormat,this._snapshotQuality).then(blob=>{this._snapshotUrl=URL.createObjectURL(blob);this._snapshotPromise=null;this._snapshotResolve(this._snapshotUrl)});this._snapshotFormat="";this._snapshotQuality=1}GetCanvasSnapshotUrl(){return this._snapshotUrl}SetIsPastingToDrawingCanvas(p){if(p)this._isPastingToDrawingCanvas++;else this._isPastingToDrawingCanvas--}IsPastingToDrawingCanvas(){return this._isPastingToDrawingCanvas>
 0}InitLoadingScreen(loaderStyle){if(!this._webglRenderer)return;if(loaderStyle===2){this._percentText=C3.New(C3.Gfx.RendererText,this.GetRenderer());this._percentText.SetIsAsync(false);this._percentText.SetFontName("Arial");this._percentText.SetFontSize(16);this._percentText.SetHorizontalAlignment("center");this._percentText.SetVerticalAlignment("center");this._percentText.SetSize(PERCENTTEXT_WIDTH,PERCENTTEXT_HEIGHT)}else if(loaderStyle===0){const loadingLogoAsset=this._runtime.GetLoadingLogoAsset();
-if(loadingLogoAsset)loadingLogoAsset.LoadStaticTexture(this._webglRenderer).catch(err=>console.warn(`[C3 runtime] Failed to create texture for loading logo: `,err))}else if(loaderStyle===4){this._LoadSvgSplashImage("splash-images/splash-logo.svg").then(tex=>{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.logo=tex}).catch(err=>console.warn("Failed to load splash image: ",err));this._LoadBitmapSplashImage("splash-images/splash-poweredby-512.png").then(tex=>
-{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.powered=tex}).catch(err=>console.warn("Failed to load splash image: ",err));this._LoadBitmapSplashImage("splash-images/splash-website-512.png").then(tex=>{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.website=tex}).catch(err=>console.warn("Failed to load splash image: ",err))}}async _LoadSvgSplashImage(url){url=(new URL(url,this._runtime.GetBaseURL())).toString();
+if(loadingLogoAsset)loadingLogoAsset.LoadStaticTexture(this._webglRenderer).catch(err=>console.warn(`[C3 runtime] Failed to create texture for loading logo: `,err))}else if(loaderStyle===4){this._LoadSvgSplashImage("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIxNzAwLjc5MDA0cHgiIGhlaWdodD0iMTcwMC43OTAwNHB4IiB2aWV3Qm94PSIyODcgMzE3IDExMjUgMTEyNSINCgkgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTcwMC43OTAwNCAxNzAwLjc5MDA0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnIGlkPSJsb2dvIj4NCgk8Zz4NCgkJPGc+DQoJCQk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTM1NC45Nzc1NCwxMTk1LjYyMzA1DQoJCQkJYzExLjM4NDc3LDAsMjIuMDEyNywzLjIzNzMsMzEuMDE3NTgsOC44Mzc4OWMxLjk0NjI5LDEuMjEwOTQsMi41ODQ5NiwzLjc0OTAyLDEuNDM4NDgsNS43MzQzOGwtNC45MzI2Miw4LjU0MTk5DQoJCQkJYy0zLjI3ODMyLDUuNjc5NjktMTAuMDMzMiw4LjM3Njk1LTE2LjMxNzM4LDYuNTAwOThjLTIuNzY0NjUtMC44MjUyLTUuNjkzMzYtMS4yNjg1NS04LjcyNjU2LTEuMjY4NTUNCgkJCQljLTE2LjgyOTEsMC0zMC40NzI2NiwxMy42NDM1NS0zMC40NzI2NiwzMC40NzI2NmMwLDE2LjgyODEzLDEzLjY0MzU1LDMwLjQ3MjY2LDMwLjQ3MjY2LDMwLjQ3MjY2DQoJCQkJYzMuMDMzMiwwLDUuOTYxOTEtMC40NDMzNiw4LjcyNjU2LTEuMjY4NTVjNi4yOTQ5Mi0xLjg3OTg4LDEzLjAzMzIsMC44MTE1MiwxNi4zMTczOCw2LjUwMDk4bDQuOTMxNjQsOC41NDE5OQ0KCQkJCWMxLjE0NzQ2LDEuOTg4MjgsMC41MTA3NCw0LjUyMzQ0LTEuNDM4NDgsNS43MzQzOGMtOS4wMDM5MSw1LjYwMTU2LTE5LjYzMTg0LDguODM3ODktMzEuMDE2Niw4LjgzNzg5DQoJCQkJYy0zMi40ODUzNSwwLTU4LjgxOTM0LTI2LjMzNDk2LTU4LjgxOTM0LTU4LjgxOTM0QzI5Ni4xNTgyLDEyMjEuOTU3MDMsMzIyLjQ5MjE5LDExOTUuNjIzMDUsMzU0Ljk3NzU0LDExOTUuNjIzMDUNCgkJCQlMMzU0Ljk3NzU0LDExOTUuNjIzMDV6IE03MDMuMjE0ODQsMTI1OS4xNzU3OGMtMTQuNTU5NTctOS44MTczOC0yMC4yMDMxMy0yMC4wMzIyMy0yMC4yMDMxMy0zMy4wODAwOA0KCQkJCWMwLTE4LjQ4OTI2LDE1LjcxNDg0LTI5Ljc2MzY3LDM4LjI2NjYtMjkuNzYzNjdjOS42NTcyMywwLDE4LjcyMTY4LDIuNTQyOTcsMjYuNTU5NTcsNi45OTQxNA0KCQkJCWMyLjA0OTgsMS4xNjQwNiwyLjc2MTcyLDMuNzgzMiwxLjU4MzAxLDUuODI0MjJsLTMuNDE3OTcsNS45MTk5MmMtMy4yNDcwNyw1LjYyNDAyLTkuOTA4Miw4LjMzMTA1LTE2LjE1MzMyLDYuNTQ4ODMNCgkJCQljLTIuNzIzNjMtMC43NzYzNy01LjU5ODYzLTEuMTkyMzgtOC41NzEyOS0xLjE5MjM4Yy0xMC40OTAyMywwLTExLjU5ODYzLDkuNTc2MTctNC44NTc0MiwxNC4xMjMwNWwyMy42ODY1MiwxNS45NzY1Ng0KCQkJCWM5Ljk5MDIzLDYuNzM4MjgsMTUuODk1NTEsMTcuMDY2NDEsMTUuODk1NTEsMjguNzE4NzVjMCwxOC43ODYxMy0xNS4wMDY4NCwzMy4zMDc2Mi0zOC4yNjc1OCwzMy4zMDc2Mg0KCQkJCWMtOS41MjI0NiwwLTE4LjU4Nzg5LTEuOTU3MDMtMjYuODE1NDMtNS40OTAyM2MtNy43ODEyNS0zLjMzOTg0LTEwLjkzMzU5LTEyLjc4MjIzLTYuNjk3MjctMjAuMTE4MTZsMy40ODczLTYuMDQxOTkNCgkJCQljMS4yMTM4Ny0yLjA5OTYxLDMuOTMxNjQtMi43NTk3Nyw1Ljk3NDYxLTEuNDU2MDVjNi44NTkzOCw0LjM4MjgxLDE2LjQ5MDIzLDcuNTk0NzMsMjQuNzU4NzksNy41OTQ3Mw0KCQkJCWMxMC41NDU5LDAsMTEuMzI4MTMtOS45NTg5OCwzLjc2NzU4LTE1LjA1NzYyTDcwMy4yMTQ4NCwxMjU5LjE3NTc4TDcwMy4yMTQ4NCwxMjU5LjE3NTc4eiBNOTg0LjYzMDg2LDEyMDIuMDAwOTgNCgkJCQljMC0yLjM0NzY2LDEuOTAzMzItNC4yNTE5NSw0LjI1MTk1LTQuMjUxOTVoOS45MjE4OGM3LjgyNzE1LDAsMTQuMTcyODUsNi4zNDU3LDE0LjE3Mjg1LDE0LjE3MzgzdjU3LjQwMTM3DQoJCQkJYzAsOC42MTAzNSw2Ljk4MDQ3LDE1LjU5MDgyLDE1LjU5MDgyLDE1LjU5MDgyczE1LjU5MDgyLTYuOTgwNDcsMTUuNTkwODItMTUuNTkwODJ2LTU3LjQwMTM3DQoJCQkJYzAtNy44MjgxMyw2LjM0NTctMTQuMTczODMsMTQuMTcyODUtMTQuMTczODNoOS45MjA5YzIuMzQ4NjMsMCw0LjI1MTk1LDEuOTA0Myw0LjI1MTk1LDQuMjUxOTV2NjcuMzIzMjQNCgkJCQljMCwyNC4yNjU2My0xOS42NzA5LDQzLjkzNzUtNDMuOTM2NTIsNDMuOTM3NXMtNDMuOTM3NS0xOS42NzE4OC00My45Mzc1LTQzLjkzNzVWMTIwMi4wMDA5OEw5ODQuNjMwODYsMTIwMi4wMDA5OHoNCgkJCQkgTTQ2Ni44NjkxNCwxMTk1LjYyMzA1YzMyLjQ4NDM4LDAsNTguODE4MzYsMjYuMzMzOTgsNTguODE4MzYsNTguODE5MzRjMCwzMi40ODQzOC0yNi4zMzM5OCw1OC44MTkzNC01OC44MTgzNiw1OC44MTkzNA0KCQkJCWMtMzIuNDg2MzMsMC01OC44MTkzNC0yNi4zMzQ5Ni01OC44MTkzNC01OC44MTkzNEM0MDguMDQ5OCwxMjIxLjk1NzAzLDQzNC4zODI4MSwxMTk1LjYyMzA1LDQ2Ni44NjkxNCwxMTk1LjYyMzA1DQoJCQkJTDQ2Ni44NjkxNCwxMTk1LjYyMzA1eiBNNDY2Ljg2OTE0LDEyMjUuMDMzMmMtMTYuMjQzMTYsMC0yOS40MTAxNiwxMy4xNjY5OS0yOS40MTAxNiwyOS40MDkxOA0KCQkJCXMxMy4xNjY5OSwyOS40MDgyLDI5LjQxMDE2LDI5LjQwODJjMTYuMjQxMjEsMCwyOS40MDgyLTEzLjE2NjAyLDI5LjQwODItMjkuNDA4MlM0ODMuMTEwMzUsMTIyNS4wMzMyLDQ2Ni44NjkxNCwxMjI1LjAzMzINCgkJCQlMNDY2Ljg2OTE0LDEyMjUuMDMzMnogTTU1Ni43MzI0MiwxMzExLjEzNDc3Yy0yLjM0NzY2LDAtNC4yNTE5NS0xLjkwMjM0LTQuMjUxOTUtNC4yNXYtOTQuOTYxOTENCgkJCQljMC03LjgyODEzLDYuMzQ1Ny0xNC4xNzM4MywxNC4xNzM4My0xNC4xNzM4M2gzLjk1ODk4YzQuNjI1LDAsOC45NTg5OCwyLjI1Njg0LDExLjYxMTMzLDYuMDQ1OWw0MS4xMjIwNyw1OC43NDcwN3YtNTAuNjE5MTQNCgkJCQljMC03LjgyODEzLDYuMzQ1Ny0xNC4xNzM4MywxNC4xNzI4NS0xNC4xNzM4M2g5LjkyMTg4YzIuMzQ3NjYsMCw0LjI1MTk1LDEuOTA0Myw0LjI1MTk1LDQuMjUxOTV2OTQuOTYwOTQNCgkJCQljMCw3LjgyOTEtNi4zNDU3LDE0LjE3Mjg1LTE0LjE3MzgzLDE0LjE3Mjg1aC0zLjk1ODk4Yy00LjYyNSwwLTguOTU4OTgtMi4yNTU4Ni0xMS42MTEzMy02LjA0NDkybC00MS4xMjIwNy01OC43NDYwOXY1MC42MTgxNg0KCQkJCWMwLDcuODI5MS02LjM0NTcsMTQuMTcyODUtMTQuMTcyODUsMTQuMTcyODVINTU2LjczMjQyTDU1Ni43MzI0MiwxMzExLjEzNDc3eiBNMTIxNS4wMjA1MSwxMjExLjkyMjg1DQoJCQkJYzAtNy44MjgxMyw2LjM0NTctMTQuMTczODMsMTQuMTcyODUtMTQuMTczODNoNTAuMzE1NDNjMi4zNDg2MywwLDQuMjUxOTUsMS45MDQzLDQuMjUxOTUsNC4yNTE5NXY1LjY2OTkyDQoJCQkJYzAsNy44MjcxNS02LjM0NTcsMTQuMTcyODUtMTQuMTcyODUsMTQuMTcyODVoLTYuMDI0NDF2NzUuMTE4MTZjMCw3LjgyOTEtNi4zNDU3LDE0LjE3Mjg1LTE0LjE3Mjg1LDE0LjE3Mjg1aC05LjkyMTg4DQoJCQkJYy0yLjM0ODYzLDAtNC4yNTE5NS0xLjkwMjM0LTQuMjUxOTUtNC4yNXYtODUuMDQxMDJoLTE1Ljk0NDM0Yy0yLjM0ODYzLDAtNC4yNTE5NS0xLjkwMzMyLTQuMjUxOTUtNC4yNTE5NVYxMjExLjkyMjg1DQoJCQkJTDEyMTUuMDIwNTEsMTIxMS45MjI4NXogTTc3Ni40NDkyMiwxMjExLjkyMjg1YzAtNy44MjgxMyw2LjM0NTctMTQuMTczODMsMTQuMTczODMtMTQuMTczODNoNTAuMzE0NDUNCgkJCQljMi4zNDk2MSwwLDQuMjUxOTUsMS45MDQzLDQuMjUxOTUsNC4yNTE5NXY1LjY2OTkyYzAsNy44MjcxNS02LjM0NTcsMTQuMTcyODUtMTQuMTcxODgsMTQuMTcyODVoLTYuMDI1Mzl2NzUuMTE4MTYNCgkJCQljMCw3LjgyOTEtNi4zNDU3LDE0LjE3Mjg1LTE0LjE3Mjg1LDE0LjE3Mjg1aC05LjkyMDljLTIuMzQ5NjEsMC00LjI1MTk1LTEuOTAyMzQtNC4yNTE5NS00LjI1di04NS4wNDEwMmgtMTUuOTQ1MzENCgkJCQljLTIuMzQ3NjYsMC00LjI1MTk1LTEuOTAzMzItNC4yNTE5NS00LjI1MTk1VjEyMTEuOTIyODVMNzc2LjQ0OTIyLDEyMTEuOTIyODV6IE05MjkuNjA0NDksMTI3Mi4wMjI0NmwyNi45NTgwMSwzMi4xMjc5Mw0KCQkJCWMyLjMxNDQ1LDIuNzU3ODEsMC4zNDM3NSw2Ljk4NDM4LTMuMjU2ODQsNi45ODQzOGgtMTkuNzA1MDhjLTQuMTg5NDUsMC04LjE2NTA0LTEuODUxNTYtMTAuODU3NDItNS4wNjA1NWwtMjIuNjgxNjQtMjcuMDMxMjUNCgkJCQl2MjcuODQxOGMwLDIuMzQ3NjYtMS45MDMzMiw0LjI1LTQuMjUxOTUsNC4yNWgtOS45MjA5Yy03LjgyNzE1LDAtMTQuMTcyODUtNi4zNDM3NS0xNC4xNzI4NS0xNC4xNzI4NXYtODUuMDM5MDYNCgkJCQljMC03LjgyODEzLDYuMzQ1Ny0xNC4xNzM4MywxNC4xNzI4NS0xNC4xNzM4M2gyOS43NjM2N2MyMi43MDAyLDAsNDEuMTAyNTQsMTcuMTMzNzksNDEuMTAyNTQsMzguMjY4NTUNCgkJCQlDOTU2Ljc1NDg4LDEyNTIuNTkwODIsOTQ1LjQzNjUyLDEyNjYuNzAyMTUsOTI5LjYwNDQ5LDEyNzIuMDIyNDZMOTI5LjYwNDQ5LDEyNzIuMDIyNDZ6IE05MDAuMDYxNTIsMTIyMS44NDM3NXYzMi41OTg2M2g4LjUwMzkxDQoJCQkJYzEwLjk1ODk4LDAsMTkuODQyNzctNy4yOTc4NSwxOS44NDI3Ny0xNi4yOTg4M2MwLTkuMDAxOTUtOC44ODM3OS0xNi4yOTk4LTE5Ljg0Mjc3LTE2LjI5OThIOTAwLjA2MTUyTDkwMC4wNjE1MiwxMjIxLjg0Mzc1eg0KCQkJCSBNMTE1OC4zNTkzOCwxMTk1LjYyMzA1YzExLjM4NDc3LDAsMjIuMDEyNywzLjIzNzMsMzEuMDE3NTgsOC44Mzc4OWMxLjk0NzI3LDEuMjEwOTQsMi41ODQ5NiwzLjc0OTAyLDEuNDM4NDgsNS43MzQzOA0KCQkJCWwtNC45MzI2Miw4LjU0MTk5Yy0zLjI3ODMyLDUuNjc5NjktMTAuMDMzMiw4LjM3Njk1LTE2LjMxNzM4LDYuNTAwOThjLTIuNzY0NjUtMC44MjUyLTUuNjkzMzYtMS4yNjg1NS04LjcyNTU5LTEuMjY4NTUNCgkJCQljLTE2LjgyOTEsMC0zMC40NzI2NiwxMy42NDM1NS0zMC40NzI2NiwzMC40NzI2NmMwLDE2LjgyODEzLDEzLjY0MzU1LDMwLjQ3MjY2LDMwLjQ3MjY2LDMwLjQ3MjY2DQoJCQkJYzMuMDMyMjMsMCw1Ljk2MDk0LTAuNDQzMzYsOC43MjU1OS0xLjI2ODU1YzYuMjk1OS0xLjg3OTg4LDEzLjAzMzIsMC44MTE1MiwxNi4zMTgzNiw2LjUwMDk4bDQuOTMwNjYsOC41NDE5OQ0KCQkJCWMxLjE0NzQ2LDEuOTg4MjgsMC41MTA3NCw0LjUyMzQ0LTEuNDM3NSw1LjczNDM4Yy05LjAwNDg4LDUuNjAxNTYtMTkuNjMyODEsOC44Mzc4OS0zMS4wMTc1OCw4LjgzNzg5DQoJCQkJYy0zMi40ODUzNSwwLTU4LjgxOTM0LTI2LjMzNDk2LTU4LjgxOTM0LTU4LjgxOTM0QzEwOTkuNTQwMDQsMTIyMS45NTcwMywxMTI1Ljg3NDAyLDExOTUuNjIzMDUsMTE1OC4zNTkzOCwxMTk1LjYyMzA1eiIvPg0KCQkJPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiMwMEZGREEiIGQ9Ik0xMzE4LjE5NzI3LDEyMDYuMDMyMjMNCgkJCQljMC03LjgyODEzLDYuMzQ1Ny0xNC4xNzM4MywxNC4xNzI4NS0xNC4xNzM4M2MyMC42NTYyNSwwLDQxLjMxMjUsMCw2MS45Njg3NSwwYzMuNDI5NjksMCw1LjQ1MDIsMy44ODA4NiwzLjQ4MzQsNi42OTA0Mw0KCQkJCWwtMTkuMjk2ODgsMjcuNTY3MzhjMTUuNTQyOTcsOC4zNzU5OCwyNi4xMDY0NSwyNC44MDA3OCwyNi4xMDY0NSw0My42OTUzMWMwLDI3LjM5NzQ2LTIyLjIwODk4LDQ5LjYwNjQ1LTQ5LjYwNjQ1LDQ5LjYwNjQ1DQoJCQkJYy0xNi42ODg0OCwwLTMxLjQ1MTE3LTguMjQwMjMtNDAuNDQzMzYtMjAuODc1OThjLTEuNDUwMi0yLjAzOTA2LTAuODMxMDUtNC44OTk0MSwxLjMzNTk0LTYuMTUyMzRsMTAuOTc3NTQtNi4zMzc4OQ0KCQkJCWM0Ljg4MTg0LTIuODE4MzYsMTAuOTc5NDktMi40NzU1OSwxNS41MTQ2NSwwLjg3MzA1YzMuNTI4MzIsMi42MDU0Nyw3Ljg5MTYsNC4xNDY0OCwxMi42MTUyMyw0LjE0NjQ4DQoJCQkJYzExLjc0MjE5LDAsMjEuMjU5NzctOS41MTg1NSwyMS4yNTk3Ny0yMS4yNTk3N3MtOS41MTc1OC0yMS4yNTk3Ny0yMS4yNTk3Ny0yMS4yNTk3N2gtMTUuMjE3NzcNCgkJCQljLTMuNDI5NjksMC01LjQ1MDItMy44ODA4Ni0zLjQ4NDM4LTYuNjkwNDNsMTguMTM1NzQtMjUuOTA4MmgtMzIuMDA5NzdjLTIuMzQ4NjMsMC00LjI1MTk1LTEuOTAzMzItNC4yNTE5NS00LjI1MTk1VjEyMDYuMDMyMjN6DQoJCQkJIi8+DQoJCTwvZz4NCgkJPGc+DQoJCQk8Zz4NCgkJCQk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0RBRThGNyIgZD0iTTg1MC4zOTU1MSw4NTcuNTkxOA0KCQkJCQljLTUwLjM1NjQ1LDAtOTQuMzI1Mi0yNy4zNTY0NS0xMTcuODUyNTQtNjguMDIwNTFsLTgwLjAzMDI3LDQ2LjIwNDFjLTQuNjU1MjcsMi42ODk0NS02LjEzMTg0LDguNzE4NzUtMy4yNDkwMiwxMy4yNTU4Ng0KCQkJCQljNDIuMjM3Myw2Ni40ODYzMywxMTYuNTMzMiwxMTAuNjA3NDIsMjAxLjEzMTg0LDExMC42MDc0MmM4OC4xMjU5OCwwLDE2NS4wNzEyOS00Ny44NzUsMjA2LjI0MzE2LTExOS4wMzYxM2wtODAuNDg3My00Ni40Njk3Mw0KCQkJCQljLTQuMzEzNDgtMi40OTAyMy05LjgwMTc2LTEuMjA1MDgtMTIuNTcwMzEsMi45MzU1NUM5MzkuMTc1NzgsODMzLjU2MjUsODk3LjU5MTgsODU3LjU5MTgsODUwLjM5NTUxLDg1Ny41OTE4DQoJCQkJCUw4NTAuMzk1NTEsODU3LjU5MTh6IE0xMTM2LjcyMTY4LDU1Ni4yMTc3N2M0LjYxNDI2LTIuNjYzMDksNi4xMTAzNS04LjYxOTE0LDMuMzEyNS0xMy4xNTEzNw0KCQkJCQljLTU5LjkxNTA0LTk3LjAzMDI3LTE2Ny4yMjQ2MS0xNjEuNjk0MzQtMjg5LjYzODY3LTE2MS42OTQzNGMtMTI1Ljg5MzU1LDAtMjM1LjgxMzQ4LDY4LjM5MjU4LTI5NC42MzM3OSwxNzAuMDQ5OA0KCQkJCQlsODAuMzc2OTUsNDYuNDA2MjVjNC4zOTc0NiwyLjUzOTA2LDEwLjAwMTk1LDEuMTQ5NDEsMTIuNzEwOTQtMy4xNDU1MQ0KCQkJCQljNDIuMTY0MDYtNjYuODUxNTYsMTE2LjY2ODk1LTExMS4yNjM2NywyMDEuNTQ1OS0xMTEuMjYzNjdjODguMTI1OTgsMCwxNjUuMDcxMjksNDcuODc1OTgsMjA2LjI0MzE2LDExOS4wMzYxMw0KCQkJCQlMMTEzNi43MjE2OCw1NTYuMjE3Nzd6Ii8+DQoJCQkJPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNBNUJBQzgiIGQ9Ik04NTAuMzk1NTEsOTU5LjYzODY3DQoJCQkJCWMtODQuNTk4NjMsMC0xNTguODk0NTMtNDQuMTIxMDktMjAxLjEzMTg0LTExMC42MDc0MmMtMi44NzY5NS00LjUzMDI3LTEuMzk5NDEtMTAuNTcwMzEsMy4yNDkwMi0xMy4yNTU4Nmw4MC4wMzAyNy00Ni4yMDQxDQoJCQkJCWMtMTEuNTgxMDUtMjAuMDE2Ni0xOC4yMDk5Ni00My4yNTQ4OC0xOC4yMDk5Ni02OC4wNDE5OWMwLTc0Ljc4NTE2LDYwLjU1NzYyLTEzNi4wNjI1LDEzNi4wNjI1LTEzNi4wNjI1DQoJCQkJCWM0Ny4xOTYyOSwwLDg4Ljc4MDI3LDI0LjAyOTMsMTEzLjE4NTU1LDYwLjUyMjQ2YzIuNzY0NjUsNC4xMzM3OSw4LjI2MzY3LDUuNDIxODgsMTIuNTcwMzEsMi45MzU1NWw4MC40ODczLTQ2LjQ2OTczDQoJCQkJCWMtNDEuMTcxODgtNzEuMTYwMTYtMTE4LjExNzE5LTExOS4wMzYxMy0yMDYuMjQzMTYtMTE5LjAzNjEzYy04NC44NzY5NSwwLTE1OS4zODE4NCw0NC40MTIxMS0yMDEuNTQ1OSwxMTEuMjYzNjcNCgkJCQkJYy0yLjcwNjA1LDQuMjkxMDItOC4zMTgzNiw1LjY4MTY0LTEyLjcxMDk0LDMuMTQ1NTFsLTgwLjM3Njk1LTQ2LjQwNjI1DQoJCQkJCWMtMjguOTUyMTUsNTAuMDQwMDQtNDUuNTIzNDQsMTA4LjEzOTY1LTQ1LjUyMzQ0LDE3MC4xMDc0MmMwLDE4Ni45NjM4NywxNTEuMzk0NTMsMzQwLjE1NzIzLDM0MC4xNTcyMywzNDAuMTU3MjMNCgkJCQkJYzEyMi40MTQwNiwwLDIyOS43MjM2My02NC42NjQwNiwyODkuNjM4NjctMTYxLjY5NTMxYzIuNzk0OTItNC41MjYzNywxLjI5NDkyLTEwLjQ5MDIzLTMuMzEyNS0xMy4xNTEzN2wtODAuMDgzMDEtNDYuMjM3Mw0KCQkJCQlDMTAxNS40NjY4LDkxMS43NjM2Nyw5MzguNTIxNDgsOTU5LjYzODY3LDg1MC4zOTU1MSw5NTkuNjM4Njd6Ii8+DQoJCQk8L2c+DQoJCQk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzAwRkZEQSIgZD0iTTExMzcuMTg1NTUsNzU4LjExMzI4di03My4xNjc5N2wtNjMuMzY1MjMsMzYuNTgzOTgNCgkJCQlMMTEzNy4xODU1NSw3NTguMTEzMjhMMTEzNy4xODU1NSw3NTguMTEzMjh6IE0xMDI2LjU3NjE3LDcwNS4xNjQwNmwxMjAuMDU4NTktNjkuMzE2NDENCgkJCQljMTIuNTY4MzYtNy4yNTU4NiwyOC4zNDQ3MywxLjg1MjU0LDI4LjM0NTcsMTYuMzY2MjF2MTM4LjYzMDg2Yy0wLjAwMDk4LDE0LjUxMjctMTUuNzc3MzQsMjMuNjIyMDctMjguMzQ1NywxNi4zNjYyMQ0KCQkJCWwtMTIwLjA1ODU5LTY5LjMxNjQxQzEwMTQuMDI4MzIsNzMwLjY0OTQxLDEwMTQuMDI4MzIsNzEyLjQwOTE4LDEwMjYuNTc2MTcsNzA1LjE2NDA2eiIvPg0KCQk8L2c+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=").then(tex=>{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.logo=tex}).catch(err=>console.warn("Failed to load splash image: ",err));this._LoadBitmapSplashImage("data:image/png;base64,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").then(tex=>
+{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.powered=tex}).catch(err=>console.warn("Failed to load splash image: ",err));this._LoadBitmapSplashImage("data:image/png;base64,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").then(tex=>{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.website=tex}).catch(err=>console.warn("Failed to load splash image: ",err))}}async _LoadSvgSplashImage(url){url=(new URL(url,this._runtime.GetBaseURL())).toString();
 const blob=await C3.FetchBlob(url);const drawable=await this._runtime.RasterSvgImage(blob,2048,2048);return await this._webglRenderer.CreateStaticTextureAsync(drawable,{mipMapQuality:"high"})}async _LoadBitmapSplashImage(url){url=(new URL(url,this._runtime.GetBaseURL())).toString();const blob=await C3.FetchBlob(url);return await this._webglRenderer.CreateStaticTextureAsync(blob,{mipMapQuality:"high"})}HideCordovaSplashScreen(){this._runtime.PostComponentMessageToDOM("runtime","hide-cordova-splash")}StartLoadingScreen(){this._loaderStartTime=
 Date.now();this._runtime.Dispatcher().addEventListener("loadingprogress",this._loadingprogress_handler);this._rafId=requestAnimationFrame(()=>this._DrawLoadingScreen());const loaderStyle=this._runtime.GetLoaderStyle();if(loaderStyle!==3)this.HideCordovaSplashScreen()}async EndLoadingScreen(){if(!this._webglRenderer)return;this._loadingProgress=1;const loaderStyle=this._runtime.GetLoaderStyle();if(loaderStyle===4)await this._splashDonePromise;this._splashDoneResolve=null;this._splashDonePromise=null;
 if(this._rafId!==-1){cancelAnimationFrame(this._rafId);this._rafId=-1}this._runtime.Dispatcher().removeEventListener("loadingprogress",this._loadingprogress_handler);this._loadingprogress_handler=null;if(this._percentText){this._percentText.Release();this._percentText=null}this._runtime.ReleaseLoadingLogoAsset();this._webglRenderer.Start();if(this._splashTextures.logo){this._webglRenderer.DeleteTexture(this._splashTextures.logo);this._splashTextures.logo=null}if(this._splashTextures.powered){this._webglRenderer.DeleteTexture(this._splashTextures.powered);
@@ -3467,6 +3467,148 @@ lastTapTime=-1E4;return"double-tap"}else{lastTapX=this._x;lastTapY=this._y;lastT
 }
 
 {
+'use strict';const C3=self.C3;C3.Plugins.AJAX=class AJAXPlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.AJAX.Type=class AJAXType extends C3.SDKTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}};
+
+}
+
+{
+'use strict';const C3=self.C3;
+C3.Plugins.AJAX.Instance=class AJAXInstance extends C3.SDKInstanceBase{constructor(inst,properties){super(inst);this._lastData="";this._curTag="";this._progress=0;this._timeout=-1;this._nextRequestHeaders=new Map;this._nextReponseBinaryData=null;this._nextRequestOverrideMimeType="";this._nwjsFs=null;this._nwjsPath=null;this._nwjsAppFolder=null;this._isNWjs=this._runtime.GetExportType()==="nwjs";if(this._isNWjs){this._nwjsFs=require("fs");this._nwjsPath=require("path");const process=self["process"]||
+nw["process"];this._nwjsAppFolder=this._nwjsPath["dirname"](process["execPath"])+"\\"}}Release(){super.Release()}async _TriggerError(tag,url,err){console.error(`[Construct 3] AJAX request to '${url}' (tag '${tag}') failed: `,err);this._curTag=tag;await this.TriggerAsync(C3.Plugins.AJAX.Cnds.OnAnyError);await this.TriggerAsync(C3.Plugins.AJAX.Cnds.OnError)}async _TriggerComplete(tag){this._curTag=tag;await this.TriggerAsync(C3.Plugins.AJAX.Cnds.OnAnyComplete);await this.TriggerAsync(C3.Plugins.AJAX.Cnds.OnComplete)}async _OnProgress(tag,
+e){if(!e["lengthComputable"])return;this._progress=e["loaded"]/e["total"];this._curTag=tag;await this.TriggerAsync(C3.Plugins.AJAX.Cnds.OnProgress)}_OnError(tag,url,err){if(!this._isNWjs){this._TriggerError(tag,url,err);return}const fs=this._nwjsFs;const filePath=this._nwjsAppFolder+url;if(fs["existsSync"](filePath))fs["readFile"](filePath,{"encoding":"utf8"},(err2,data)=>{if(err2)this._TriggerError(tag,url,err2);else{this._lastData=data.replace(/\r\n/g,"\n");this._TriggerComplete(tag)}});else this._TriggerError(tag,
+url,err)}async _DoCordovaRequest(tag,file){const assetManager=this._runtime.GetAssetManager();const binaryData=this._nextReponseBinaryData;this._nextReponseBinaryData=null;try{if(binaryData){const buffer=await assetManager.CordovaFetchLocalFileAsArrayBuffer(file);binaryData.SetArrayBufferTransfer(buffer);this._lastData="";this._TriggerComplete(tag)}else{const data=await assetManager.CordovaFetchLocalFileAsText(file);this._lastData=data.replace(/\r\n/g,"\n");this._TriggerComplete(tag)}}catch(err){this._TriggerError(tag,
+file,err)}}_DoRequest(tag,url,method,data){return new Promise(resolve=>{const errorFunc=err=>{this._OnError(tag,url,err);resolve()};const binaryData=this._nextReponseBinaryData;this._nextReponseBinaryData=null;try{const request=new XMLHttpRequest;request.onreadystatechange=()=>{if(request.readyState===4){if(binaryData)this._lastData="";else this._lastData=(request.responseText||"").replace(/\r\n/g,"\n");if(request.status>=400)this._TriggerError(tag,url,request.status+request.statusText);else{const hasData=
+this._lastData.length||binaryData&&request.response instanceof ArrayBuffer;if((!this._isNWjs||hasData)&&!(!this._isNWjs&&request.status===0&&!hasData)){if(binaryData)binaryData.SetArrayBufferTransfer(request.response);this._TriggerComplete(tag)}}resolve()}};request.onerror=errorFunc;request.ontimeout=errorFunc;request.onabort=errorFunc;request["onprogress"]=e=>this._OnProgress(tag,e);request.open(method,url);if(this._timeout>=0&&typeof request["timeout"]!=="undefined")request["timeout"]=this._timeout;
+request.responseType=binaryData?"arraybuffer":"text";if(data&&!this._nextRequestHeaders.has("Content-Type"))if(typeof data!=="string")request["setRequestHeader"]("Content-Type","application/octet-stream");else request["setRequestHeader"]("Content-Type","application/x-www-form-urlencoded");for(const [header,value]of this._nextRequestHeaders)try{request["setRequestHeader"](header,value)}catch(err){console.error(`[Construct 3] AJAX: Failed to set header '${header}: ${value}': `,err)}this._nextRequestHeaders.clear();
+if(this._nextRequestOverrideMimeType){try{request["overrideMimeType"](this._nextRequestOverrideMimeType)}catch(err){console.error(`[Construct 3] AJAX: failed to override MIME type: `,err)}this._nextRequestOverrideMimeType=""}if(data)request.send(data);else request.send()}catch(err){errorFunc(err)}})}GetDebuggerProperties(){const prefix="plugins.ajax.debugger";return[{title:prefix+".title",properties:[{name:prefix+".last-data",value:this._lastData}]}]}SaveToJson(){return{"lastData":this._lastData}}LoadFromJson(o){this._lastData=
+o["lastData"];this._curTag="";this._progress=0}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.AJAX.Cnds={OnComplete(tag){return C3.equalsNoCase(this._curTag,tag)},OnAnyComplete(){return true},OnError(tag){return C3.equalsNoCase(this._curTag,tag)},OnAnyError(){return true},OnProgress(tag){return C3.equalsNoCase(this._curTag,tag)}};
+
+}
+
+{
+'use strict';const C3=self.C3;
+C3.Plugins.AJAX.Acts={async Request(tag,url){if(this._runtime.IsCordova()&&C3.IsRelativeURL(url)&&this._runtime.GetAssetManager().IsFileProtocol())await this._DoCordovaRequest(tag,url);else if(this._runtime.IsPreview()&&C3.IsRelativeURL(url)){const localurl=this._runtime.GetAssetManager().GetLocalUrlAsBlobUrl(url.toLowerCase());await this._DoRequest(tag,localurl,"GET",null)}else await this._DoRequest(tag,url,"GET",null)},async RequestFile(tag,file){if(this._runtime.IsCordova()&&this._runtime.GetAssetManager().IsFileProtocol())await this._DoCordovaRequest(tag,
+file);else await this._DoRequest(tag,this._runtime.GetAssetManager().GetLocalUrlAsBlobUrl(file),"GET",null)},async Post(tag,url,data,method){await this._DoRequest(tag,url,method,data)},async PostBinary(tag,url,objectClass,method){if(!objectClass)return;const target=objectClass.GetFirstPicked(this._inst);if(!target)return;const sdkInst=target.GetSdkInstance();const buffer=sdkInst.GetArrayBufferReadOnly();await this._DoRequest(tag,url,method,buffer)},SetTimeout(t){this._timeout=t*1E3},SetHeader(n,v){this._nextRequestHeaders.set(n,
+v)},SetResponseBinary(objectClass){if(!objectClass)return;const inst=objectClass.GetFirstPicked(this._inst);if(!inst)return;this._nextReponseBinaryData=inst.GetSdkInstance()},OverrideMIMEType(m){this._nextRequestOverrideMimeType=m}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.AJAX.Exps={LastData(){return this._lastData},Progress(){return this._progress},Tag(){return this._curTag}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.Json=class JSONPlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.Json.Type=class JSONType extends C3.SDKTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}};
+
+}
+
+{
+'use strict';const C3=self.C3;const C3X=self.C3X;const IInstance=self.IInstance;
+C3.Plugins.Json.Instance=class JSONInstance extends C3.SDKInstanceBase{constructor(inst,properties){super(inst);this._valueCache=[null,null];this._locationCache=[null,null];this._data={};this._path=[];this._currentKey="";this._currentValue=0}Release(){super.Release()}_InvalidateValueCache(){this._valueCache[0]=null;this._valueCache[1]=null}_HasValueCache(arr,isMutate){const cacheArr=this._valueCache[0];if(arr===null||cacheArr===null)return false;if(cacheArr===arr||C3.arraysEqual(cacheArr,arr))return true;
+if(isMutate&&cacheArr.length>0){for(let i=0,len=Math.min(arr.length,cacheArr.length);i<len;++i)if(arr[i]!==cacheArr[i])return false;return true}else return false}_GetValueCache(){return this._valueCache[1]}_UpdateValueCache(arr,value){this._valueCache[0]=arr;this._valueCache[1]=value}_InvalidateLocationCache(){this._locationCache[0]=null;this._locationCache[1]=null}_HasLocationCache(str){return this._locationCache[0]===str}_GetLocationCache(){return this._locationCache[1]}_UpdateLocationCache(str,
+value){this._locationCache[0]=str;this._locationCache[1]=value}_SetData(obj){this._data=obj;this._InvalidateValueCache()}_GetData(){return this._data}_SetPath(str){this._path=this._ParsePathUnsafe(str);this._InvalidateLocationCache()}_ParsePath(str){return C3.cloneArray(this._ParsePathUnsafe(str))}_ParsePathUnsafe(str){const buffer=[];let escaped=false;let parts;if(this._HasLocationCache(str))return this._GetLocationCache();if(str[0]==="."){parts=C3.cloneArray(this._path);str=str.slice(1)}else parts=
+[];for(const c of str)if(escaped){buffer.push(c);escaped=false}else if(c==="\\")escaped=true;else if(c==="."){parts.push(buffer.join(""));C3.clearArray(buffer)}else buffer.push(c);if(buffer.length!==0)parts.push(buffer.join(""));this._UpdateLocationCache(str,parts);return parts}_GetValueAtFullPath(path,lazyCreate){if(this._HasValueCache(path,false))return this._GetValueCache();let result=this._data;for(const part of path)if(Array.isArray(result)){const index=parseInt(part,10);if(index<0||index>=result.length||
+!isFinite(index)){result=null;break}result=result[index]}else if(typeof result==="object"&&result!==null)if(result.hasOwnProperty(part))result=result[part];else if(lazyCreate){const o={};result[part]=o;result=o}else{result=null;break}else{result=null;break}this._UpdateValueCache(path,result);return result}_GetValue(str){const path=this._ParsePath(str);if(!path.length)return this._data;const key=path.pop();const obj=this._GetValueAtFullPath(path,false);if(Array.isArray(obj)){const index=parseInt(key,
+10);return index>=0&&index<obj.length?obj[index]:null}else if(typeof obj==="object"&&obj!==null)return obj.hasOwnProperty(key)?obj[key]:null;else return null}_JSONTypeOf(val){if(val===null)return"null";else if(Array.isArray(val))return"array";else return typeof val}_GetTypeOf(str){const val=this._GetValue(str);return this._JSONTypeOf(val)}_ToSafeValue(value){const type=typeof value;if(type==="number"||type==="string")return value;else if(type==="boolean")return value?1:0;else return 0}_GetSafeValue(str){return this._ToSafeValue(this._GetValue(str))}_HasKey(str){const path=
+this._ParsePath(str);if(!path.length)return false;const key=path.pop();const obj=this._GetValueAtFullPath(path,false);if(Array.isArray(obj)){const index=parseInt(key,10);return index>=0&&index<obj.length}else if(typeof obj==="object"&&obj!==null)return obj.hasOwnProperty(key);else return false}_SetValue(str,value){const path=this._ParsePath(str);if(!path.length)return false;if(this._HasValueCache(path,true))this._InvalidateValueCache();const key=path.pop();const obj=this._GetValueAtFullPath(path,
+true);if(Array.isArray(obj)){const index=parseInt(key,10);if(!isFinite(index)||index<0||index>=obj.length)return false;obj[index]=value;return true}else if(typeof obj==="object"&&obj!==null){obj[key]=value;return true}return false}_DeleteKey(str){const path=this._ParsePath(str);if(!path.length)return false;if(this._HasValueCache(path,true))this._InvalidateValueCache();const key=path.pop();const obj=this._GetValueAtFullPath(path,false);if(Array.isArray(obj))return false;else if(typeof obj==="object"&&
+obj!==null){delete obj[key];return true}else return false}SaveToJson(){return{"path":this._path,"data":this._data}}LoadFromJson(o){this._InvalidateValueCache();this._InvalidateLocationCache();this._path=o["path"];this._data=o["data"]}_SanitizeValue(val){const type=typeof val;if(type==="number"){if(!isFinite(val))return 0;return val}if(typeof val=="object")return JSON.stringify(val);return val+""}GetDebuggerProperties(){const prefix="plugins.json.debugger";let topLevelData;try{topLevelData=this._SanitizeValue(this._data)}catch(e){topLevelData=
+'"invalid"'}return[{title:prefix+".title",properties:[{name:prefix+".data",value:topLevelData,onedit:v=>{try{const n=JSON.parse(v);this._SetData(n)}catch(e){}}},{name:prefix+".path",value:this._path.map(seg=>seg.replace(/\./g,"\\.")).join(".")}]}]}GetScriptInterfaceClass(){return self.IJSONInstance}};const map=new WeakMap;
+self.IJSONInstance=class IJSONInstance extends IInstance{constructor(){super();map.set(this,IInstance._GetInitInst().GetSdkInstance())}getJsonDataCopy(){const data=map.get(this)._GetData();return JSON.parse(JSON.stringify(data))}setJsonDataCopy(o){try{const o2=JSON.parse(JSON.stringify(o));map.get(this)._SetData(o2)}catch(err){console.error("[JSON plugin] setJsonData: object is not valid JSON: ",err);throw err;}}setJsonString(str){C3X.RequireString(str);try{const o=JSON.parse(str);map.get(this)._SetData(o)}catch(err){console.error("[JSON plugin] setJsonString: string is not valid JSON: ",
+err);throw err;}}toCompactString(){return JSON.stringify(map.get(this)._GetData())}toBeautifiedString(){return JSON.stringify(map.get(this)._GetData(),null,4)}};
+
+}
+
+{
+'use strict';const C3=self.C3;const JSON_TYPES=["null","boolean","number","string","object","array"];
+C3.Plugins.Json.Cnds={HasKey(str){return this._HasKey(str)},CompareType(str,typeIndex){return this._GetTypeOf(str)===JSON_TYPES[typeIndex]},CompareValue(str,cmp,value){return C3.compare(this._GetSafeValue(str),cmp,value)},IsBooleanSet(str){return this._GetValue(str)===true},ForEach(str){const value=this._GetValue(str);if(typeof value!=="object"||value===null)return false;const runtime=this._runtime;const eventSheetManager=runtime.GetEventSheetManager();const currentEvent=runtime.GetCurrentEvent();
+const solModifiers=currentEvent.GetSolModifiers();const eventStack=runtime.GetEventStack();const oldFrame=eventStack.GetCurrentStackFrame();const newFrame=eventStack.Push(currentEvent);const oldPath=this._path;const oldKey=this._currentKey;const oldValue=this._currentValue;const subPath=this._ParsePathUnsafe(str);runtime.SetDebuggingEnabled(false);for(const [k,v]of Object.entries(value)){this._path=C3.cloneArray(subPath);this._path.push(k);this._currentKey=k;this._currentValue=v;eventSheetManager.PushCopySol(solModifiers);
+currentEvent.Retrigger(oldFrame,newFrame);eventSheetManager.PopSol(solModifiers)}runtime.SetDebuggingEnabled(true);this._path=oldPath;this._currentKey=oldKey;this._currentValue=oldValue;eventStack.Pop();return false},OnParseError(){return true}};
+
+}
+
+{
+'use strict';const C3=self.C3;
+C3.Plugins.Json.Acts={Parse(str){try{this._SetData(JSON.parse(str))}catch(err){console.warn("[JSON plugin] Failed to parse JSON data: ",err);this._SetData({});this.Trigger(C3.Plugins.Json.Cnds.OnParseError)}},SetPath(str){this._SetPath(str)},SetValue(str,value){this._SetValue(str,value)},SetArray(str,size){let value=this._GetValue(str);if(Array.isArray(value))C3.resizeArray(value,size,0);else{value=[];C3.extendArray(value,size,0);this._SetValue(str,value)}},SetObject(str){this._SetValue(str,{})},
+SetJSON(location,value){let obj=null;try{obj=JSON.parse(value)}catch(err){console.warn("[JSON plugin] Failed to parse JSON data: ",err);this.Trigger(C3.Plugins.Json.Cnds.OnParseError)}this._SetValue(location,obj)},SetNull(str){this._SetValue(str,null)},SetBoolean(str,value){this._SetValue(str,value!==0)},ToggleBoolean(str){const value=this._GetValue(str);if(typeof value==="boolean")this._SetValue(str,!value)},AddTo(str,inc){const value=this._GetValue(str);if(typeof value==="number")this._SetValue(str,
+value+inc)},SubtractFrom(str,dec){const value=this._GetValue(str);if(typeof value==="number")this._SetValue(str,value-dec)},DeleteKey(str){this._DeleteKey(str)},PushValue(side,str,value){const parent=this._GetValue(str);if(Array.isArray(parent))side===0?parent.push(value):parent.unshift(value)},PopValue(side,str){const parent=this._GetValue(str);if(Array.isArray(parent))side===0?parent.pop():parent.shift()},InsertValue(value,str,index){const parent=this._GetValue(str);if(Array.isArray(parent))parent.splice(index,
+0,value)},RemoveValues(count,str,index){const parent=this._GetValue(str);if(Array.isArray(parent))parent.splice(index,count)}};
+
+}
+
+{
+'use strict';const C3=self.C3;
+C3.Plugins.Json.Exps={ToCompactString(){try{return JSON.stringify(this._data)}catch(err){return""}},ToBeautifiedString(){try{return JSON.stringify(this._data,null,4)}catch(err){return""}},Get(str){return this._GetSafeValue(str)},GetAsCompactString(str){const value=this._GetValue(str);return JSON.stringify(value)},GetAsBeautifiedString(str){const value=this._GetValue(str);return JSON.stringify(value,null,4)},Front(str){const parent=this._GetValue(str);if(Array.isArray(parent)){const value=parent[0];
+return this._ToSafeValue(value)}else return-1},Back(str){const parent=this._GetValue(str);if(Array.isArray(parent)){const value=parent.at(-1);return this._ToSafeValue(value)}else return-1},Type(str){return this._GetTypeOf(str)},ArraySize(str){const value=this._GetValue(str);if(Array.isArray(value))return value.length;else return-1},Path(){return this._path.map(seg=>seg.replace(/\./g,"\\.")).join(".")},CurrentKey(){return this._currentKey},CurrentValue(){return this._ToSafeValue(this._currentValue)},
+CurrentType(){return this._JSONTypeOf(this._currentValue)}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.Browser=class BrowserPlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.Browser.Type=class BrowserType extends C3.SDKTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}};
+
+}
+
+{
+'use strict';const C3=self.C3;const DOM_COMPONENT_ID="browser";
+C3.Plugins.Browser.Instance=class BrowserInstance extends C3.SDKInstanceBase{constructor(inst,properties){super(inst,DOM_COMPONENT_ID);this._initLocationStr="";this._isOnline=false;this._referrer="";this._docTitle="";this._isCookieEnabled=false;this._screenWidth=0;this._screenHeight=0;this._windowOuterWidth=0;this._windowOuterHeight=0;this._isScirraArcade=false;this.AddDOMMessageHandlers([["online-state",e=>this._OnOnlineStateChanged(e)],["backbutton",()=>this._OnBackButton()],["sw-message",e=>this._OnSWMessage(e)],
+["hashchange",e=>this._OnHashChange(e)]]);const rt=this.GetRuntime().Dispatcher();this._disposables=new C3.CompositeDisposable(C3.Disposable.From(rt,"afterfirstlayoutstart",()=>this._OnAfterFirstLayoutStart()),C3.Disposable.From(rt,"window-resize",()=>this._OnWindowResize()),C3.Disposable.From(rt,"suspend",()=>this._OnSuspend()),C3.Disposable.From(rt,"resume",()=>this._OnResume()));this._runtime.AddLoadPromise(this.PostToDOMAsync("get-initial-state",{"exportType":this._runtime.GetExportType()}).then(data=>
+{this._initLocationStr=data["location"];this._isOnline=data["isOnline"];this._referrer=data["referrer"];this._docTitle=data["title"];this._isCookieEnabled=data["isCookieEnabled"];this._screenWidth=data["screenWidth"];this._screenHeight=data["screenHeight"];this._windowOuterWidth=data["windowOuterWidth"];this._windowOuterHeight=data["windowOuterHeight"];this._isScirraArcade=data["isScirraArcade"]}))}Release(){super.Release()}_OnAfterFirstLayoutStart(){this.PostToDOM("ready-for-sw-messages")}async _OnOnlineStateChanged(e){const isOnline=
+!!e["isOnline"];if(this._isOnline===isOnline)return;this._isOnline=isOnline;if(this._isOnline)await this.TriggerAsync(C3.Plugins.Browser.Cnds.OnOnline);else await this.TriggerAsync(C3.Plugins.Browser.Cnds.OnOffline)}async _OnWindowResize(){await this.TriggerAsync(C3.Plugins.Browser.Cnds.OnResize)}_OnSuspend(){this.Trigger(C3.Plugins.Browser.Cnds.OnPageHidden)}_OnResume(){this.Trigger(C3.Plugins.Browser.Cnds.OnPageVisible)}async _OnBackButton(){await this.TriggerAsync(C3.Plugins.Browser.Cnds.OnBackButton)}_OnSWMessage(e){const messageType=
+e["type"];if(messageType==="downloading-update")this.Trigger(C3.Plugins.Browser.Cnds.OnUpdateFound);else if(messageType==="update-ready"||messageType==="update-pending")this.Trigger(C3.Plugins.Browser.Cnds.OnUpdateReady);else if(messageType==="offline-ready")this.Trigger(C3.Plugins.Browser.Cnds.OnOfflineReady)}_OnHashChange(e){this._initLocationStr=e["location"];this.Trigger(C3.Plugins.Browser.Cnds.OnHashChange)}GetDebuggerProperties(){const prefix="plugins.browser.debugger";return[{title:"plugins.browser.name",
+properties:[{name:prefix+".user-agent",value:navigator.userAgent},{name:prefix+".is-online",value:this._isOnline},{name:prefix+".is-fullscreen",value:this._runtime.GetCanvasManager().IsDocumentFullscreen()}]}]}};
+
+}
+
+{
+'use strict';const C3=self.C3;
+C3.Plugins.Browser.Cnds={IsOnline(){return this._isOnline},OnOnline(){return true},OnOffline(){return true},OnResize(){return true},CookiesEnabled(){return this._isCookieEnabled},IsFullscreen(){return this._runtime.GetCanvasManager().IsDocumentFullscreen()},OnBackButton(){return true},IsPortraitLandscape(p){const lastInnerWidth=this._runtime.GetCanvasManager().GetLastWidth();const lastInnerHeight=this._runtime.GetCanvasManager().GetLastHeight();const current=lastInnerWidth<=lastInnerHeight?0:1;return current===
+p},OnUpdateFound(){return true},OnUpdateReady(){return true},OnOfflineReady(){return true},OnHashChange(){return true},PageVisible(){return!this._runtime.IsSuspended()},OnPageHidden(){return true},OnPageVisible(){return true},HasJava(){return false},IsDownloadingUpdate(){return false},OnMenuButton(){return false},OnSearchButton(){return false},IsMetered(){return false},IsCharging(){return true},SupportsFullscreen(){return true}};
+
+}
+
+{
+'use strict';const C3=self.C3;const ORIENTATIONS=["portrait","landscape","portrait-primary","portrait-secondary","landscape-primary","landscape-secondary"];
+C3.Plugins.Browser.Acts={Alert(message){this.PostToDOM("alert",{"message":message.toString()})},Close(){if(this._isScirraArcade)return;if(this._runtime.IsDebug())self.C3Debugger.CloseWindow();else this.PostToDOM("close")},Focus(){this.PostToDOM("set-focus",{"isFocus":true})},Blur(){this.PostToDOM("set-focus",{"isFocus":false})},GoBack(){if(this._isScirraArcade)return;this.PostToDOM("navigate",{"type":"back"})},GoForward(){if(this._isScirraArcade)return;this.PostToDOM("navigate",{"type":"forward"})},
+GoHome(){},Reload(){if(this._isScirraArcade)return;if(this._runtime.IsDebug())this._runtime.PostToDebugger({"type":"reload"});else this.PostToDOM("navigate",{"type":"reload"})},GoToURL(url,target){this._PostToDOMMaybeSync("navigate",{"type":"url","url":url,"target":target,"exportType":this._runtime.GetExportType()})},GoToURLWindow(url,tag){this._PostToDOMMaybeSync("navigate",{"type":"new-window","url":url,"tag":tag,"exportType":this._runtime.GetExportType()})},RequestFullScreen(mode,navUi){if(mode>=
+2)mode+=1;if(mode===6)mode=2;if(mode===1)mode=0;const modeStr=C3.CanvasManager._FullscreenModeNumberToString(mode);this._runtime.GetCanvasManager().SetDocumentFullscreenMode(modeStr);this._PostToDOMMaybeSync("request-fullscreen",{"navUI":navUi})},CancelFullScreen(){this._PostToDOMMaybeSync("exit-fullscreen")},Vibrate(pattern){const arr=pattern.split(",");for(let i=0,len=arr.length;i<len;++i)arr[i]=parseInt(arr[i],10);this._PostToDOMMaybeSync("vibrate",{"pattern":arr})},async InvokeDownload(url,filename){if(!url||
+!filename)return;const urlToDownload=await this._runtime.GetAssetManager().GetProjectFileUrl(url);this._runtime.InvokeDownload(urlToDownload,filename)},InvokeDownloadString(str,mimeType,filename){if(!filename)return;const dataUri=`data:${mimeType},${encodeURIComponent(str)}`;this._runtime.InvokeDownload(dataUri,filename)},ConsoleLog(type,msg){msg=msg.toString();if(type===0)console.log(msg);else if(type===1)console.warn(msg);else if(type===2)console.error(msg)},ConsoleGroup(name){console.group(name)},
+ConsoleGroupEnd(){console.groupEnd()},ExecJs(jsStr){try{eval(jsStr)}catch(err){console.error("Error executing JavaScript: ",err)}},LockOrientation(o){o=Math.floor(o);if(o<0||o>=ORIENTATIONS.length)return;const orientation=ORIENTATIONS[o];this._PostToDOMMaybeSync("lock-orientation",{"orientation":orientation})},UnlockOrientation(){this._PostToDOMMaybeSync("unlock-orientation")},LoadStyleSheet(url){this._runtime.GetAssetManager().LoadStyleSheet(url)},SetHash(h){this.PostToDOM("set-hash",{"hash":h})}};
+
+}
+
+{
+'use strict';const C3=self.C3;
+C3.Plugins.Browser.Exps={URL(){if(this._runtime.IsInWorker())return this._initLocationStr;else return location.toString()},Protocol(){if(this._runtime.IsInWorker())return(new URL(this._initLocationStr)).protocol;else return location.protocol},Domain(){if(this._runtime.IsInWorker())return(new URL(this._initLocationStr)).hostname;else return location.hostname},Port(){if(this._runtime.IsInWorker())return(new URL(this._initLocationStr)).port;else return location.port},PathName(){if(this._runtime.IsInWorker())return(new URL(this._initLocationStr)).pathname;else return location.pathname},
+Hash(){if(this._runtime.IsInWorker())return(new URL(this._initLocationStr)).hash;else return location.hash},QueryString(){if(this._runtime.IsInWorker())return(new URL(this._initLocationStr)).search;else return location.search},QueryParam(param){const search=this._runtime.IsInWorker()?(new URL(this._initLocationStr)).search:location.search;const match=RegExp("[?&]"+param+"=([^&]*)").exec(search);if(match)return decodeURIComponent(match[1].replace(/\+/g," "));else return""},Referrer(){return this._referrer},
+Title(){return this._docTitle},Language(){return navigator.language},Platform(){return navigator.platform},UserAgent(){return navigator.userAgent},ExecJS(jsStr){let result=0;try{result=eval(jsStr)}catch(err){console.error("Error executing JavaScript: ",err)}if(typeof result==="number"||typeof result==="string")return result;if(typeof result==="boolean")return result?1:0;else return 0},Name(){return navigator.appName},Version(){return navigator.appVersion},Product(){return navigator.product},Vendor(){return navigator.vendor},
+BatteryLevel(){return 1},BatteryTimeLeft(){return Infinity},Bandwidth(){const connection=navigator["connection"];if(connection)return connection["downlink"]||connection["downlinkMax"]||connection["bandwidth"]||Infinity;else return Infinity},ConnectionType(){const connection=navigator["connection"];if(connection)return connection["type"]||"unknown";else return"unknown"},DevicePixelRatio(){return self.devicePixelRatio},ScreenWidth(){return this._screenWidth},ScreenHeight(){return this._screenHeight},
+WindowInnerWidth(){return this._runtime.GetCanvasManager().GetLastWidth()},WindowInnerHeight(){return this._runtime.GetCanvasManager().GetLastHeight()},WindowOuterWidth(){return this._windowOuterWidth},WindowOuterHeight(){return this._windowOuterWidth}};
+
+}
+
+{
 'use strict';const C3=self.C3;C3.Behaviors.Tween=class TweenBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}};
 
 }
@@ -3624,21 +3766,33 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Tween,
 		C3.Plugins.Touch,
 		C3.Behaviors.Pin,
+		C3.Plugins.AJAX,
+		C3.Plugins.Json,
+		C3.Plugins.Browser,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.System.Cnds.Compare,
-		C3.Behaviors.Tween.Acts.TweenTwoProperties,
-		C3.Plugins.Sprite.Exps.Width,
-		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.AJAX.Acts.Request,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Cnds.EveryTick,
 		C3.Plugins.Sprite.Acts.RotateClockwise,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Behaviors.Tween.Acts.TweenTwoProperties,
+		C3.Plugins.Sprite.Exps.Width,
+		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.Browser.Acts.Alert,
+		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.Sprite.Cnds.OnCollision,
-		C3.Plugins.Sprite.Acts.SetDefaultColor
+		C3.Plugins.Sprite.Acts.SetDefaultColor,
+		C3.Plugins.AJAX.Cnds.OnComplete,
+		C3.Plugins.Json.Acts.Parse,
+		C3.Plugins.AJAX.Exps.LastData,
+		C3.Plugins.Browser.Acts.ConsoleLog,
+		C3.Plugins.Json.Cnds.CompareValue,
+		C3.Plugins.System.Cnds.Else
 	];
 };
 self.C3_JsPropNameTable = [
@@ -3652,6 +3806,9 @@ self.C3_JsPropNameTable = [
 	{cor: 0},
 	{Pin: 0},
 	{Sprite: 0},
+	{AJAX: 0},
+	{JSON: 0},
+	{Browser: 0},
 	{velocidade: 0},
 	{tamanho: 0}
 ];
@@ -3759,13 +3916,9 @@ self.C3_ExpressionFuncs = [
 			return () => v0.GetValue();
 		},
 		() => 0,
+		() => "sorteio",
+		() => "https://contabeis.club/sorteio",
 		() => "cresce",
-		p => {
-			const n0 = p._GetNode(0);
-			const v1 = p._GetNode(1).GetVar();
-			return () => (n0.ExpObject() + v1.GetValue());
-		},
-		() => 0.5,
 		() => 20,
 		() => 0.05,
 		() => "volta",
@@ -3773,6 +3926,11 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			return () => (n0.ExpObject() - v1.GetValue());
+		},
+		() => 0.5,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject("msg");
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -3792,7 +3950,20 @@ self.C3_ExpressionFuncs = [
 		() => 6,
 		() => 3709498,
 		() => 7,
-		() => 2539169
+		() => 2539169,
+		p => {
+			const n0 = p._GetNode(0);
+			const v1 = p._GetNode(1).GetVar();
+			return () => (n0.ExpObject() + v1.GetValue());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0();
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject("girar");
+		}
 ];
 
 
