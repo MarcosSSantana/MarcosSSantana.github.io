@@ -3974,8 +3974,11 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Mouse,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Behaviors.Pin.Acts.PinByProperties,
+		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
+		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.AJAX.Acts.Request,
@@ -3990,19 +3993,19 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Acts.SubVar,
-		C3.Plugins.System.Exps.int,
-		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Behaviors.Rotate.Acts.SetEnabled,
 		C3.Plugins.System.Acts.Wait,
-		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.AJAX.Cnds.OnComplete,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Browser.Acts.ConsoleLog,
+		C3.Plugins.Json.Exps.Get,
+		C3.Plugins.System.Exps.int,
 		C3.Plugins.Browser.Acts.Alert,
+		C3.Plugins.AJAX.Cnds.OnError,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
 		C3.Behaviors.Sin.Acts.SetEnabled,
 		C3.Plugins.Sprite.Acts.SetDefaultColor,
@@ -4016,9 +4019,12 @@ self.C3_JsPropNameTable = [
 	{bk: 0},
 	{Rotate: 0},
 	{roleta: 0},
+	{habilita: 0},
 	{bnt: 0},
 	{Touch: 0},
 	{valor: 0},
+	{idRodada: 0},
+	{comemora: 0},
 	{seta: 0},
 	{cor: 0},
 	{id: 0},
@@ -4044,6 +4050,7 @@ self.C3_JsPropNameTable = [
 	{Seta2: 0},
 	{clsVelocimentro: 0},
 	{clsVelocidade: 0},
+	{erro: 0},
 	{tamanho: 0},
 	{velocimetro: 0},
 	{ID: 0}
@@ -4162,16 +4169,7 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 100,
 		() => 2,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			return () => f0(n1.ExpObject("idP"));
-		},
 		() => 15,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject("msg");
-		},
 		() => 0.5,
 		() => "aparece",
 		() => 850,
@@ -4190,6 +4188,16 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpObject("girar");
 		},
 		() => "mandou girar girou",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			return () => f0(n1.ExpObject("idP"));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject("msg");
+		},
+		() => "erro",
 		() => 16777215,
 		p => {
 			const n0 = p._GetNode(0);
