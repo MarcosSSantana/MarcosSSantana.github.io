@@ -4004,7 +4004,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Browser.Acts.ConsoleLog,
 		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.System.Exps.int,
-		C3.Plugins.Browser.Acts.Alert,
 		C3.Plugins.AJAX.Cnds.OnError,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
 		C3.Behaviors.Sin.Acts.SetEnabled,
@@ -4192,10 +4191,6 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
 			return () => f0(n1.ExpObject("idP"));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject("msg");
 		},
 		() => "erro",
 		() => 16777215,
