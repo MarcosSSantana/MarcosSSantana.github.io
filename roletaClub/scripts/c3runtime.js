@@ -4210,10 +4210,6 @@ self.C3_ExpressionFuncs = [
 		() => 2080470,
 		() => 3,
 		() => 8407007,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => and("tempo ", v0.GetValue());
-		},
 		() => 60
 ];
 
