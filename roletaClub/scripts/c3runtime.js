@@ -3976,13 +3976,13 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Sprite.Acts.SetVisible,
+		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.AJAX.Acts.Request,
-		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Mouse.Cnds.IsOverObject,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Behaviors.Rotate.Cnds.IsEnabled,
@@ -4010,7 +4010,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetDefaultColor,
 		C3.Plugins.System.Acts.ToggleBoolVar,
 		C3.Plugins.Sprite.Cnds.OnCollision,
-		C3.Behaviors.Rotate.Exps.Speed
+		C3.Behaviors.Rotate.Exps.Speed,
+		C3.Plugins.System.Cnds.Every,
+		C3.Plugins.System.Acts.AddVar,
+		C3.Plugins.Touch.Cnds.OnTapGesture
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4050,7 +4053,9 @@ self.C3_JsPropNameTable = [
 	{clsVelocimentro: 0},
 	{clsVelocidade: 0},
 	{erro: 0},
+	{roletaProtetorTela: 0},
 	{tamanho: 0},
+	{tempo: 0},
 	{velocimetro: 0},
 	{ID: 0}
 ];
@@ -4153,6 +4158,8 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
+		() => -30,
+		() => "",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
@@ -4160,7 +4167,6 @@ self.C3_ExpressionFuncs = [
 		() => 0,
 		() => "sorteio",
 		() => "https://contabeis.club/sorteio",
-		() => "",
 		() => 1,
 		p => {
 			const n0 = p._GetNode(0);
@@ -4203,7 +4209,12 @@ self.C3_ExpressionFuncs = [
 		() => 4433670,
 		() => 2080470,
 		() => 3,
-		() => 8407007
+		() => 8407007,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => and("tempo ", v0.GetValue());
+		},
+		() => 30
 ];
 
 
