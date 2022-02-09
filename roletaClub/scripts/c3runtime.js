@@ -4214,7 +4214,7 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => and("tempo ", v0.GetValue());
 		},
-		() => 30
+		() => 60
 ];
 
 
