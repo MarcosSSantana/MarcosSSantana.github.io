@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Candy Rain</title>
+
+  <link rel="manifest" href="appmanifest.json">
+  <link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="icons/icon-256.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
+  <link rel="icon" type="image/png" href="icons/icon-512.png">
+
+  <link rel="preload" href="src/fonts/Bud-Bold/5edf3ea5ee13a426718c98661045228e.eot" as="font" crossorigin>
+  <link rel="preload" href="src/fonts/Bud-Bold/5edf3ea5ee13a426718c98661045228e.woff2" as="font" crossorigin>
+  <link rel="preload" href="src/fonts/Bud-Bold/5edf3ea5ee13a426718c98661045228e.woff" as="font" crossorigin>
+  <link rel="preload" href="src/fonts/Bud-Bold/5edf3ea5ee13a426718c98661045228e.ttf" as="font" crossorigin>
+  <link rel="preload" href="src/fonts/Bud-Bold/5edf3ea5ee13a426718c98661045228e.svg#Bud Bold" as="font" crossorigin>
+  <link rel="preload" href="src/fonts/Roboto-Regular.ttf" as="font" crossorigin>
+  <link rel="preload" href="src/fonts/Roboto-Bold.ttf" as="font" crossorigin>
+
+  <link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+  <!-- <script src="src/gd.js"></script> -->
+  <script src="main.js"></script>
+  <script>
+    const app = new KuroObi.Main({
+      tutorial: true,
+      timer: 20,
+      products: 8,
+      obstacle: 2,
+
+    });
+    window.onload = (event) => {
+      document.body.appendChild(app.view);
+
+      app.event.on("endGameLoading", () => {
+        console.log("fim do carregamento do jogo");
+        // nextButton.addEventListener('mouseUp', function () {
+        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
+          gdsdk.showAd();
+        }
+        // });
+      });
+
+      app.event.on("playGame", () => {
+        console.log("iniciou o jogo");
+        // nextButton.addEventListener('mouseUp', function () {
+        /* if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
+           gdsdk.showAd();
+         }*/
+        // });
+      });
+
+      app.event.on("playTutorial", () => {
+        console.log("iniciou o tutorial");
+        // nextButton.addEventListener('mouseUp', function () {
+        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
+          gdsdk.showAd();
+        }
+        // });
+      });
+
+      app.event.on("pauseGame", () => {
+        console.log("pausou o jogo");
+        // nextButton.addEventListener('mouseUp', function () {
+        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
+          gdsdk.showAd();
+        }
+        // });
+      });
+
+      app.event.on("gameOver", () => {
+        console.log("acabou o jogo");
+        // nextButton.addEventListener('mouseUp', function () {
+        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') {
+          gdsdk.showAd();
+        }
+        // });
+      });
+
+
+
+    };
+
+
+  </script>
+
+</body>
+
+</html>

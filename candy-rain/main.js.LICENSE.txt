@@ -1,0 +1,656 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*!
+ * @pixi/constants - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/constants is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/core - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/core is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/display - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/display is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/extensions - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/extensions is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/filter-alpha - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/filter-alpha is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/filter-color-matrix - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/filter-color-matrix is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/filter-fxaa - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/filter-fxaa is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/filter-noise - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/filter-noise is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/math - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/math is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/mixin-get-child-by-name - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/mixin-get-child-by-name is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/mixin-get-global-position - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/mixin-get-global-position is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/polyfill - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/polyfill is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/prepare - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/prepare is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/runner - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/runner is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/settings - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/settings is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/ticker - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/ticker is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * @pixi/utils - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * @pixi/utils is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*!
+ * CSSPlugin 3.11.5
+ * https://greensock.com
+ *
+ * Copyright 2008-2023, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/*!
+ * GSAP 3.11.5
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2023, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/*!
+ * pixi.js - v6.5.1
+ * Compiled Sun, 24 Jul 2022 20:56:21 UTC
+ *
+ * pixi.js is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+/*! ./Accountant */
+
+/*! ./Boxe */
+
+/*! ./BoxeIcon */
+
+/*! ./Button */
+
+/*! ./CSSPlugin.js */
+
+/*! ./Cart */
+
+/*! ./Dialog */
+
+/*! ./GameScene */
+
+/*! ./Main */
+
+/*! ./Modal */
+
+/*! ./ModalWin */
+
+/*! ./PreGame */
+
+/*! ./Product */
+
+/*! ./Tooltips */
+
+/*! ./TutorialScene */
+
+/*! ./allSettled */
+
+/*! ./decode */
+
+/*! ./desk/MenuScene */
+
+/*! ./encode */
+
+/*! ./finally */
+
+/*! ./gsap-core.js */
+
+/*! ./mobile/MenuScene */
+
+/*! ./util */
+
+/*! @pixi/accessibility */
+
+/*! @pixi/app */
+
+/*! @pixi/compressed-textures */
+
+/*! @pixi/constants */
+
+/*! @pixi/core */
+
+/*! @pixi/display */
+
+/*! @pixi/extensions */
+
+/*! @pixi/extract */
+
+/*! @pixi/filter-alpha */
+
+/*! @pixi/filter-blur */
+
+/*! @pixi/filter-color-matrix */
+
+/*! @pixi/filter-displacement */
+
+/*! @pixi/filter-fxaa */
+
+/*! @pixi/filter-noise */
+
+/*! @pixi/graphics */
+
+/*! @pixi/interaction */
+
+/*! @pixi/loaders */
+
+/*! @pixi/math */
+
+/*! @pixi/mesh */
+
+/*! @pixi/mesh-extras */
+
+/*! @pixi/mixin-cache-as-bitmap */
+
+/*! @pixi/mixin-get-child-by-name */
+
+/*! @pixi/mixin-get-global-position */
+
+/*! @pixi/particle-container */
+
+/*! @pixi/polyfill */
+
+/*! @pixi/prepare */
+
+/*! @pixi/runner */
+
+/*! @pixi/settings */
+
+/*! @pixi/sound */
+
+/*! @pixi/sprite */
+
+/*! @pixi/sprite-animated */
+
+/*! @pixi/sprite-tiling */
+
+/*! @pixi/spritesheet */
+
+/*! @pixi/text */
+
+/*! @pixi/text-bitmap */
+
+/*! @pixi/ticker */
+
+/*! @pixi/utils */
+
+/*! earcut */
+
+/*! eventemitter3 */
+
+/*! gsap */
+
+/*! https://mths.be/punycode v1.3.2 by @mathias */
+
+/*! object-assign */
+
+/*! pixi.js */
+
+/*! promise-polyfill */
+
+/*! punycode */
+
+/*! querystring */
+
+/*! url */
+
+/*!*********************!*\
+  !*** ./src/Main.ts ***!
+  \*********************/
+
+/*!**********************!*\
+  !*** ./src/index.ts ***!
+  \**********************/
+
+/*!**************************!*\
+  !*** ./src/desk/Boxe.ts ***!
+  \**************************/
+
+/*!**************************!*\
+  !*** ./src/desk/Cart.ts ***!
+  \**************************/
+
+/*!***************************!*\
+  !*** ./src/desk/Modal.ts ***!
+  \***************************/
+
+/*!****************************!*\
+  !*** ./src/desk/Button.ts ***!
+  \****************************/
+
+/*!****************************!*\
+  !*** ./src/desk/Dialog.ts ***!
+  \****************************/
+
+/*!****************************!*\
+  !*** ./src/mobile/Boxe.ts ***!
+  \****************************/
+
+/*!****************************!*\
+  !*** ./src/mobile/Cart.ts ***!
+  \****************************/
+
+/*!*****************************!*\
+  !*** ./src/desk/PreGame.ts ***!
+  \*****************************/
+
+/*!*****************************!*\
+  !*** ./src/desk/Product.ts ***!
+  \*****************************/
+
+/*!*****************************!*\
+  !*** ./src/mobile/Modal.ts ***!
+  \*****************************/
+
+/*!******************************!*\
+  !*** ./src/desk/BoxeIcon.ts ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/desk/ModalWin.ts ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/desk/Tooltips.ts ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/mobile/Button.ts ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/mobile/Dialog.ts ***!
+  \******************************/
+
+/*!*******************************!*\
+  !*** ./src/desk/GameScene.ts ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/desk/MenuScene.ts ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/mobile/PreGame.ts ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/mobile/Product.ts ***!
+  \*******************************/
+
+/*!********************************!*\
+  !*** ./src/desk/Accountant.ts ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/mobile/BoxeIcon.ts ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/mobile/ModalWin.ts ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/mobile/Tooltips.ts ***!
+  \********************************/
+
+/*!*********************************!*\
+  !*** ./node_modules/url/url.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/mobile/GameScene.ts ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/mobile/MenuScene.ts ***!
+  \*********************************/
+
+/*!**********************************!*\
+  !*** ./node_modules/url/util.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/mobile/Accountant.ts ***!
+  \**********************************/
+
+/*!***********************************!*\
+  !*** ./src/desk/TutorialScene.ts ***!
+  \***********************************/
+
+/*!************************************!*\
+  !*** ./node_modules/gsap/index.js ***!
+  \************************************/
+
+/*!*************************************!*\
+  !*** ./src/mobile/TutorialScene.ts ***!
+  \*************************************/
+
+/*!****************************************!*\
+  !*** ./node_modules/gsap/CSSPlugin.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./node_modules/gsap/gsap-core.js ***!
+  \****************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/earcut/src/earcut.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/punycode/punycode.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/querystring/index.js ***!
+  \*******************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/querystring/decode.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/querystring/encode.js ***!
+  \********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/eventemitter3/index.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/object-assign/index.js ***!
+  \*********************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/pixi.js/dist/esm/pixi.mjs ***!
+  \************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/@pixi/app/dist/esm/app.mjs ***!
+  \*************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/@pixi/core/dist/esm/core.mjs ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/@pixi/math/dist/esm/math.mjs ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/@pixi/mesh/dist/esm/mesh.mjs ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/@pixi/text/dist/esm/text.mjs ***!
+  \***************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/promise-polyfill/src/index.js ***!
+  \****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/@pixi/utils/dist/esm/utils.mjs ***!
+  \*****************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/promise-polyfill/src/finally.js ***!
+  \******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/@pixi/runner/dist/esm/runner.mjs ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/@pixi/sprite/dist/esm/sprite.mjs ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/@pixi/ticker/dist/esm/ticker.mjs ***!
+  \*******************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@pixi/display/dist/esm/display.mjs ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@pixi/extract/dist/esm/extract.mjs ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@pixi/loaders/dist/esm/loaders.mjs ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@pixi/prepare/dist/esm/prepare.mjs ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@pixi/sound/dist/pixi-sound.esm.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/promise-polyfill/src/allSettled.js ***!
+  \*********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/@pixi/graphics/dist/esm/graphics.mjs ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/@pixi/polyfill/dist/esm/polyfill.mjs ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/@pixi/settings/dist/esm/settings.mjs ***!
+  \***********************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/@pixi/constants/dist/esm/constants.mjs ***!
+  \*************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/@pixi/extensions/dist/esm/extensions.mjs ***!
+  \***************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/@pixi/filter-blur/dist/esm/filter-blur.mjs ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/@pixi/filter-fxaa/dist/esm/filter-fxaa.mjs ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/@pixi/interaction/dist/esm/interaction.mjs ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/@pixi/mesh-extras/dist/esm/mesh-extras.mjs ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/@pixi/spritesheet/dist/esm/spritesheet.mjs ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/@pixi/text-bitmap/dist/esm/text-bitmap.mjs ***!
+  \*****************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/@pixi/filter-alpha/dist/esm/filter-alpha.mjs ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/@pixi/filter-noise/dist/esm/filter-noise.mjs ***!
+  \*******************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/@pixi/accessibility/dist/esm/accessibility.mjs ***!
+  \*********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/@pixi/sprite-tiling/dist/esm/sprite-tiling.mjs ***!
+  \*********************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ./node_modules/@pixi/sprite-animated/dist/esm/sprite-animated.mjs ***!
+  \*************************************************************************/
+
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@pixi/particle-container/dist/esm/particle-container.mjs ***!
+  \*******************************************************************************/
+
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@pixi/compressed-textures/dist/esm/compressed-textures.mjs ***!
+  \*********************************************************************************/
+
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@pixi/filter-color-matrix/dist/esm/filter-color-matrix.mjs ***!
+  \*********************************************************************************/
+
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@pixi/filter-displacement/dist/esm/filter-displacement.mjs ***!
+  \*********************************************************************************/
+
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@pixi/mixin-cache-as-bitmap/dist/esm/mixin-cache-as-bitmap.mjs ***!
+  \*************************************************************************************/
+
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@pixi/mixin-get-child-by-name/dist/esm/mixin-get-child-by-name.mjs ***!
+  \*****************************************************************************************/
+
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@pixi/mixin-get-global-position/dist/esm/mixin-get-global-position.mjs ***!
+  \*********************************************************************************************/
