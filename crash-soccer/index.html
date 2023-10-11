@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crash Blaze</title>
+
+  <link rel="manifest" href="appmanifest.json" />
+  <link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png" />
+  <link rel="apple-touch-icon" sizes="256x256" href="icons/icon-256.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png" />
+  <link rel="icon" type="image/png" href="icons/icon-512.png" />
+
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+
+<body style="background-color: #e1e1d9;">
+  <div id="game"></div>
+  <script src="main.js"></script>
+  <script>
+    const app = new Crash.Main({
+      background: `./src/img/background.png`,
+      menudesk: `./src/img/menu-desk.png`,
+      ball: `./src/img/ball.png`,
+      ballTwo: `./src/img/ballTwo.png`,
+      buttunsdesk: `./src/img/buttuns-desk.png`,
+      // character: `./src/img/character.json`,
+      base: `./src/img/base.png`,
+      bermuda: `./src/img/bermuda.png`,
+      braco: `./src/img/braco-e.png`,
+      cabeca: `./src/img/cabeca.png`,
+      canela: `./src/img/canela-e.png`,
+      coxa: `./src/img/coxa-e.png`,
+      pe: `./src/img/pe-e.png`,
+      tronco: `./src/img/tronco.png`,
+    });
+
+    window.onload = (event) => {
+      document.getElementById("game").appendChild(app.view);
+
+      app.event.on("endGameLoading", () => {
+        console.log("fim do carregamento do jogo");
+      });
+
+      app.event.on("playing", () => {
+        console.log("inicio jogada");
+        app.game.Scene.play();
+        app.game.setCurrentTotal(3);
+
+      });
+
+    };
+
+  </script>
+</body>
+
+</html>
