@@ -1,0 +1,55 @@
+{
+	"frames": {
+		"o1.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 112,
+				"h": 131
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 112,
+				"h": 131
+			},
+			"sourceSize": {
+				"w": 112,
+				"h": 131
+			}
+		},
+		"o2.png": {
+			"frame": {
+				"x": 115,
+				"y": 1,
+				"w": 112,
+				"h": 131
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 112,
+				"h": 131
+			},
+			"sourceSize": {
+				"w": 112,
+				"h": 131
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "obstacle.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 228,
+			"h": 133
+		},
+		"scale": "1"
+	}
+}
