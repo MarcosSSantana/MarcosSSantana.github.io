@@ -1,0 +1,84 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "categoria": "Frutas",
+      "options": [
+        { "id": 1, "pt": "banana", "en": "banana" },
+        { "id": 2, "pt": "maçã", "en": "apple" },
+        { "id": 3, "pt": "laranja", "en": "orange" },
+        { "id": 4, "pt": "uva", "en": "grape" },
+        { "id": 5, "pt": "manga", "en": "mango" },
+        { "id": 6, "pt": "melancia", "en": "watermelon" },
+        { "id": 7, "pt": "abacaxi", "en": "pineapple" },
+        { "id": 8, "pt": "morango", "en": "strawberry" },
+        { "id": 9, "pt": "pêssego", "en": "peach" },
+        { "id": 10, "pt": "limão", "en": "lemon" }
+      ]
+    },
+    {
+      "id": 2,
+      "categoria": "Móveis",
+      "options": [
+        { "id": 1, "pt": "sofá", "en": "sofa" },
+        { "id": 2, "pt": "poltrona", "en": "armchair" },
+        { "id": 3, "pt": "cama", "en": "bed" },
+        { "id": 4, "pt": "armário", "en": "wardrobe" },
+        { "id": 5, "pt": "mesa", "en": "table" },
+        { "id": 6, "pt": "cadeira", "en": "chair" },
+        { "id": 7, "pt": "escrivaninha", "en": "desk" },
+        { "id": 8, "pt": "estante", "en": "bookcase" },
+        { "id": 9, "pt": "rack", "en": "rack" },
+        { "id": 10, "pt": "buffet", "en": "sideboard" }
+      ]
+    },
+    {
+      "id": 3,
+      "categoria": "Animais",
+      "options": [
+        { "id": 1, "pt": "cachorro", "en": "dog" },
+        { "id": 2, "pt": "gato", "en": "cat" },
+        { "id": 3, "pt": "passarinho", "en": "bird" },
+        { "id": 4, "pt": "peixe", "en": "fish" },
+        { "id": 5, "pt": "coelho", "en": "rabbit" },
+        { "id": 6, "pt": "tartaruga", "en": "turtle" },
+        { "id": 7, "pt": "hamster", "en": "hamster" },
+        { "id": 8, "pt": "pássaro", "en": "bird" },
+        { "id": 9, "pt": "cavalo", "en": "horse" },
+        { "id": 10, "pt": "vaca", "en": "cow" }
+      ]
+    },
+    {
+      "id": 4,
+      "categoria": "Insetos",
+      "options": [
+        { "id": 1, "pt": "borboleta", "en": "butterfly" },
+        { "id": 2, "pt": "abelha", "en": "bee" },
+        { "id": 3, "pt": "formiga", "en": "ant" },
+        { "id": 4, "pt": "besouro", "en": "beetle" },
+        { "id": 5, "pt": "mosquito", "en": "mosquito" },
+        { "id": 6, "pt": "joaninha", "en": "ladybug" },
+        { "id": 7, "pt": "grilo", "en": "cricket" },
+        { "id": 8, "pt": "libélula", "en": "dragonfly" },
+        { "id": 9, "pt": "mariposa", "en": "moth" },
+        { "id": 10, "pt": "barata", "en": "cockroach" }
+      ]
+    },
+    {
+      "id": 5,
+      "categoria": "Cores",
+      "options": [
+        { "id": 1, "pt": "vermelho", "en": "red" },
+        { "id": 2, "pt": "azul", "en": "blue" },
+        { "id": 3, "pt": "verde", "en": "green" },
+        { "id": 4, "pt": "amarelo", "en": "yellow" },
+        { "id": 5, "pt": "laranja", "en": "orange" },
+        { "id": 6, "pt": "roxo", "en": "purple" },
+        { "id": 7, "pt": "rosa", "en": "pink" },
+        { "id": 8, "pt": "branco", "en": "white" },
+        { "id": 9, "pt": "preto", "en": "black" },
+        { "id": 10, "pt": "cinza", "en": "gray" }
+      ]
+    }
+  ]
+}
