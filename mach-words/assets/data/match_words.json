@@ -79,6 +79,42 @@
         { "id": 9, "pt": "preto", "en": "black" },
         { "id": 10, "pt": "cinza", "en": "gray" }
       ]
+    },
+    {
+      "id": 6,
+      "categoria": "Palavras",
+      "options": [
+        { "id": 1, "pt": "eu", "en": "I" },
+        { "id": 2, "pt": "você", "en": "you" },
+        { "id": 3, "pt": "ele", "en": "he" },
+        { "id": 4, "pt": "ela", "en": "she" },
+        { "id": 5, "pt": "isso", "en": "it" },
+        { "id": 6, "pt": "nós", "en": "we" },
+        { "id": 7, "pt": "eles", "en": "they" },
+        { "id": 8, "pt": "ser", "en": "be" },
+        { "id": 9, "pt": "ter", "en": "have" },
+        { "id": 10, "pt": "fazer", "en": "do" },
+        { "id": 11, "pt": "dizer", "en": "say" },
+        { "id": 12, "pt": "ir", "en": "go" },
+        { "id": 13, "pt": "poder", "en": "can" },
+        { "id": 14, "pt": "ver", "en": "see" },
+        { "id": 15, "pt": "saber", "en": "know" },
+        { "id": 16, "pt": "pegar", "en": "take" },
+        { "id": 17, "pt": "fazer", "en": "make" },
+        { "id": 18, "pt": "querer", "en": "want" },
+        { "id": 19, "pt": "ir", "en": "will" },
+        { "id": 20, "pt": "contar", "en": "tell" },
+        { "id": 21, "pt": "trabalhar", "en": "work" },
+        { "id": 22, "pt": "ligar", "en": "call" },
+        { "id": 23, "pt": "tentar", "en": "try" },
+        { "id": 24, "pt": "pedir", "en": "ask" },
+        { "id": 25, "pt": "precisar", "en": "need" },
+        { "id": 26, "pt": "sentir", "en": "feel" },
+        { "id": 27, "pt": "tornar-se", "en": "become" },
+        { "id": 28, "pt": "deixar", "en": "leave" },
+        { "id": 29, "pt": "colocar", "en": "put" },
+        { "id": 30, "pt": "significar", "en": "mean" }
+      ]
     }
   ]
 }
