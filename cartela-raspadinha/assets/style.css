@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    height: 95vh;
+}
+
+canvas {
+    aspect-ratio: auto;
+}
+
+@media screen and (orientation: landscape) {
+    canvas {
+        height: 100%;
+    }
+    body{
+        height: 100vh;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    canvas {
+        width: 100%;
+    }
+}

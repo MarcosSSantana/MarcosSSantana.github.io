@@ -1,0 +1,435 @@
+{
+	"frames": {
+		"animRaspar-00.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-01.png": {
+			"frame": {
+				"x": 403,
+				"y": 1,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-02.png": {
+			"frame": {
+				"x": 805,
+				"y": 1,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-03.png": {
+			"frame": {
+				"x": 1207,
+				"y": 1,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-04.png": {
+			"frame": {
+				"x": 1,
+				"y": 363,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-05.png": {
+			"frame": {
+				"x": 403,
+				"y": 363,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-06.png": {
+			"frame": {
+				"x": 805,
+				"y": 363,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-07.png": {
+			"frame": {
+				"x": 1207,
+				"y": 363,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-08.png": {
+			"frame": {
+				"x": 1,
+				"y": 725,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-09.png": {
+			"frame": {
+				"x": 403,
+				"y": 725,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-10.png": {
+			"frame": {
+				"x": 805,
+				"y": 725,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-11.png": {
+			"frame": {
+				"x": 1207,
+				"y": 725,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-12.png": {
+			"frame": {
+				"x": 1,
+				"y": 1087,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-13.png": {
+			"frame": {
+				"x": 403,
+				"y": 1087,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-14.png": {
+			"frame": {
+				"x": 805,
+				"y": 1087,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-15.png": {
+			"frame": {
+				"x": 1207,
+				"y": 1087,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-16.png": {
+			"frame": {
+				"x": 1609,
+				"y": 1,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-17.png": {
+			"frame": {
+				"x": 1609,
+				"y": 363,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-18.png": {
+			"frame": {
+				"x": 1609,
+				"y": 725,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-19.png": {
+			"frame": {
+				"x": 1609,
+				"y": 1087,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		},
+		"animRaspar-20.png": {
+			"frame": {
+				"x": 1,
+				"y": 1449,
+				"w": 400,
+				"h": 360
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 360
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 360
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "animRaspar.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 2010,
+			"h": 1810
+		},
+		"scale": "1"
+	}
+}
