@@ -1,0 +1,49 @@
+{
+  "app": {
+    "width": 1280,
+    "height": 720,
+    "backgroundColor": "0x343a40"
+  },
+  "text": {
+    "playScreen": {
+      "fontSize": 46,
+      "fill": "white",
+      "fontWeight": 900,
+      "wordWrapWidth": 1200,
+      "content": "Descubra o seu nível de maturidade empresarial e concorra a um prêmio!"
+    },
+    "question": {
+      "fontSize": 46,
+      "fill": "white",
+      "fontWeight": 900,
+      "wordWrapWidth": 1200
+    },
+    "button": {
+      "fontSize": 24,
+      "fill": "white",
+      "fontWeight": 400,
+      "wordWrapWidth": 540
+    },
+    "result": {
+      "fontSize": 30,
+      "fontWeight": 600,
+      "fill": "white",
+      "wordWrapWidth": 1200
+    },
+    "error": {
+      "fontSize": 24,
+      "fill": "white"
+    },
+    "restartButton": "Reiniciar Quiz",
+    "startButton": "Iniciar Quiz"
+  },
+  "button": {
+    "width": 540,
+    "height": 120,
+    "color": "0xff5722"
+  },
+  "spacing": {
+    "button": 20,
+    "answers": 50
+  }
+}

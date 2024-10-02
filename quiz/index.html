@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz com PixiJS</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            /* Remove margens */
+            padding: 0;
+            /* Remove preenchimento */
+            overflow: hidden;
+            /* Evita rolagem indesejada */
+            display: flex;
+            /* Usando flexbox para centralizar */
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            align-items: center;
+            /* Centraliza verticalmente */
+            height: 100vh;
+            /* Altura total da viewport */
+            /* background-color: #0984fe; */
+            background-color: #343a40;
+        }
+
+        canvas {
+            display: block;
+            /* Remove margens no canvas */
+            width: 100%;
+            /* Largura total do elemento pai */
+            height: auto;
+            /* Altura automática para manter a proporção */
+            max-width: 1280px;
+            /* Largura máxima para telas grandes */
+            max-height: 720px;
+            /* Altura máxima para telas grandes */
+            aspect-ratio: 16 / 9;
+            /* Mantém a proporção de 16:9 */
+        }
+
+        @media (max-width: 768px) {
+            canvas {
+                max-width: 100%;
+                /* Permite que o canvas ocupe toda a largura em dispositivos móveis */
+                max-height: 100%;
+                /* Permite que o canvas ocupe toda a altura em dispositivos móveis */
+                aspect-ratio: auto;
+                /* Desativa a proporção fixa em telas pequenas */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.5.2/browser/pixi.js" defer></script>
+    <script src="quiz.js" defer></script>
+</body>
+
+</html>
