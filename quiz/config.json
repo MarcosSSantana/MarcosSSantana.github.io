@@ -2,13 +2,13 @@
   "app": {
     "width": 1280,
     "height": 720,
-    "backgroundColor": "0x343a40"
+    "backgroundColor": "0x221B41"
   },
   "text": {
     "playScreen": {
       "fontSize": 46,
       "fill": "white",
-      "fontWeight": 900,
+      "fontWeight": 600,
       "wordWrapWidth": 1200,
       "content": "Descubra o seu nível de maturidade empresarial e concorra a um prêmio!"
     },
@@ -40,7 +40,7 @@
   "button": {
     "width": 540,
     "height": 120,
-    "color": "0xff5722"
+    "color": "0xEC6856"
   },
   "spacing": {
     "button": 20,

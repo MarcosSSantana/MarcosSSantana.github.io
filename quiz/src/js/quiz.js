@@ -44,6 +44,19 @@ class QuizApp {
     showPlayScreen() {
         this.app.stage.removeChildren();
 
+
+        // Adicionando uma imagem
+        const imageUrl = 'src/img/logo.png'; 
+        const texture = PIXI.Texture.from(imageUrl);
+        const imageSprite = new PIXI.Sprite(texture);
+
+        // Centralizando a imagem na tela
+        imageSprite.anchor.set(0.5);
+        imageSprite.x = this.app.screen.width / 2;
+        imageSprite.y = this.app.screen.height / 4; 
+
+        this.app.stage.addChild(imageSprite);
+
         const playText = new PIXI.Text(this.config.text.playScreen.content, {
             fontSize: this.config.text.playScreen.fontSize,
             fill: this.config.text.playScreen.fill,
@@ -52,13 +65,15 @@ class QuizApp {
             wordWrapWidth: this.config.text.playScreen.wordWrapWidth,
             align: 'center'
         });
+        
         playText.anchor.set(0.5);
         playText.x = this.app.screen.width / 2;
-        playText.y = this.app.screen.height / 4;
+        playText.y = imageSprite.y+221;
         this.app.stage.addChild(playText);
+        console.log(playText.y+playText.height);
 
         const startButton = this.createButton(this.config.text.startButton, -1);
-        startButton.y = (this.app.screen.height / 2) - (startButton.height / 2);
+        startButton.y = playText.y + playText.height;
         startButton.x = (this.app.screen.width / 2) - (startButton.width / 2);
         startButton.on('pointerdown', () => this.startQuiz());
 
@@ -78,6 +93,7 @@ class QuizApp {
         const question = this.questions[this.currentQuestionIndex];
 
         const questionText = new PIXI.Text(question.pergunta, {
+            fontFamily: "Urbanist",
             fontSize: this.config.text.question.fontSize,
             fill: this.config.text.question.fill,
             fontWeight: this.config.text.question.fontWeight,
@@ -122,6 +138,7 @@ class QuizApp {
 
         // Configuração do texto com word wrap
         const buttonText = new PIXI.Text(text, {
+            fontFamily: "Urbanist",
             fontSize: this.config.text.button.fontSize,
             fill: this.config.text.button.fill,
             fontWeight: this.config.text.button.fontWeight,
@@ -159,6 +176,7 @@ class QuizApp {
 
         const maturityMessage = this.getMaturityLevelMessage();
         const resultText = new PIXI.Text(maturityMessage, {
+            fontFamily: "Urbanist",
             fontSize: this.config.text.result.fontSize,
             fontWeight: this.config.text.result.fontWeight,
             fill: this.config.text.result.fill,
@@ -189,7 +207,7 @@ class QuizApp {
         let countB = 0;
         let countC = 0;
         let countD = 0;
-        let countE = 0;
+        // let countE = 0;
 
         // Contar as respostas
         userAnswers.forEach(answer => {
@@ -198,20 +216,20 @@ class QuizApp {
                 case 1: countB++; break;
                 case 2: countC++; break;
                 case 3: countD++; break;
-                case 4: countE++; break;
+                // case 4: countE++; break;
             }
         });
 
         // Lógica para determinar o nível de maturidade
-        if (countA + countE > countB + countC + countD) {
-            return "Nível 1: Maturidade Inicial\n\n" +
-                "Se o empresário escolheu majoritariamente as opções A e E, a empresa está em um nível inicial de maturidade em gestão e uso de dados. O processo de previsão de demanda é baseado em métodos tradicionais, como séries históricas, ou até mesmo em intuições da equipe comercial, sem a integração de análises preditivas avançadas. O controle de estoque e alocação de colaboradores é feito de forma manual ou por planilhas, o que limita a eficiência e a capacidade de responder rapidamente às demandas do mercado. A assertividade na previsão de demanda provavelmente está abaixo de 50%, e o uso de dados para tomada de decisão ainda é mínimo, com pouca ou nenhuma tecnologia avançada aplicada.";
-        } else if (countB + countC > countA + countD + countE) {
-            return "Nível 2: Maturidade Intermediária\n\n" +
-                "Se o empresário escolheu predominantemente as opções B e C, a empresa possui um nível intermediário de maturidade em gestão e uso de dados. Já existe um uso mais sofisticado de dados, como a aplicação de ferramentas preditivas em áreas específicas e a implementação de sistemas digitais básicos para controle de estoque e alocação de colaboradores. A previsão de demanda tem uma assertividade entre 50% e 70%, o que demonstra uma evolução no processo, mas ainda há espaço para melhorias significativas, especialmente na integração e automatização das soluções. A empresa utiliza dados para suporte à decisão, mas ainda de forma pontual, sem uma visão completamente integrada.";
-        } else if (countC + countD > countA + countB + countE) {
-            return "Nível 3: Maturidade Avançada\n\n" +
-                "Se o empresário escolheu majoritariamente as opções C e D, a empresa atingiu um nível avançado de maturidade em gestão e uso de dados. O uso de análises preditivas avançadas e plataformas integradas que automatizam processos de abastecimento, previsão de demanda e alocação de colaboradores indica que a empresa está na vanguarda da gestão baseada em dados. A assertividade na previsão de demanda é superior a 70%, e a empresa otimiza suas decisões em tempo real, utilizando dados de desempenho e demanda. As decisões são altamente orientadas por análises de dados avançadas, resultando em uma operação ágil, eficiente e adaptável.";
+        if (countA + countD > countB + countC) {
+            return "Nível 1: Maturidade inicial\n\n" +
+                "A sua empresa está em um nível inicial de maturidade em gestão e uso de dados. O processo de previsão de demanda ainda não utiliza ferramentas avançadas e preditivas.\n\n O controle de estoque e alocação de colaboradores é feito de forma manual ou por planilhas, o que limita a eficiência e a capacidade de responder rapidamente às demandas do mercado.\n\n A previsão de demanda pode ser mais eficaz ao unir dados e IA, o que garante assertividade. ";
+        } else if (countB > countA + countD) {
+            return "Nível 2: Maturidade intermediária\n\n" +
+                "A sua empresa possui um nível intermediário de maturidade em gestão e uso de dados, como a aplicação de ferramentas preditivas em áreas específicas e a implementação de sistemas digitais básicos para controle de estoque e alocação de colaboradores.\n\n A empresa utiliza dados para suporte à decisão, mas ainda de forma pontual, sem uma visão completamente integrada.\n\n Ainda há espaço para melhorias significativas, especialmente na integração e automatização das soluções.";
+        } else if (countC > countA + countB) {
+            return "Nível 3: Maturidade avançada\n\n" +
+                "A sua empresa já está em um nível avançado de maturidade em gestão e uso de dados. O uso de análises preditivas e plataformas integradas que automatizam processos de abastecimento já fazem parte da rotina.\n\n Geralmente, as decisões são orientadas por análises de dados avançadas, resultando em uma operação ágil, eficiente e adaptável.\n\n Continue acompanhando as atualizações do mercado para garantir uma operação assertiva e eficaz.";
         }
 
         return "Nenhum nível de maturidade claramente identificado. Considere rever as respostas.";
@@ -225,6 +243,7 @@ class QuizApp {
         this.app.stage.removeChildren();
 
         const errorText = new PIXI.Text(message, {
+            fontFamily: "Urbanist",
             fontSize: this.config.text.error.fontSize,
             fill: this.config.text.error.fill,
             align: 'center'

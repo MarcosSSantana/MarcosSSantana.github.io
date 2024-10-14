@@ -5,7 +5,6 @@
       "Utilizamos séries históricas de dados e vendas",
       "Aplicamos análises preditivas avançadas",
       "Baseamos nas informações fornecidas pelo time comercial",
-      "Todas as anteriores",
       "Nenhuma das anteriores"
     ]
   },
@@ -13,14 +12,14 @@
     "pergunta": "Como o processo de compra/abastecimento é gerido na sua empresa?",
     "respostas": [
       "Controlamos os estoques manualmente ou via planilhas",
-      "Temos alertas diários automáticos de abastecimento",
-      "Utilizamos um sistema digital básico para controle de estoque",
-      "Contamos com uma plataforma integrada que automatiza todo o processo de abastecimento"
+      "Temos alertas diários automáticos de abastecimento e/ou utilizamos um sistema digital básico para controle de estoque",
+      "Contamos com uma plataforma integrada que automatiza todo o processo de abastecimento",
+      "Nenhuma das anteriores"
     ]
   },
   {
     "pergunta": "O quanto você confia na sua previsão de demanda?",
-    "respostas": ["Inferior a 50%", "Entre 50% e 70%", "Superior a 70%"]
+    "respostas": ["Inferior a 50%", "Entre 50% e 70%", "Superior a 70%", "Nenhuma das anteriores"]
   },
   {
     "pergunta": "Como a sua empresa gerencia a alocação de colaboradores para garantir eficiência e atender às demandas operacionais em tempo real?",
