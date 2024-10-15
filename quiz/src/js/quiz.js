@@ -46,14 +46,14 @@ class QuizApp {
 
 
         // Adicionando uma imagem
-        const imageUrl = 'src/img/logo.png'; 
+        const imageUrl = 'src/img/logo.png';
         const texture = PIXI.Texture.from(imageUrl);
         const imageSprite = new PIXI.Sprite(texture);
 
         // Centralizando a imagem na tela
         imageSprite.anchor.set(0.5);
         imageSprite.x = this.app.screen.width / 2;
-        imageSprite.y = this.app.screen.height / 4; 
+        imageSprite.y = this.app.screen.height / 4;
 
         this.app.stage.addChild(imageSprite);
 
@@ -65,12 +65,12 @@ class QuizApp {
             wordWrapWidth: this.config.text.playScreen.wordWrapWidth,
             align: 'center'
         });
-        
+
         playText.anchor.set(0.5);
         playText.x = this.app.screen.width / 2;
-        playText.y = imageSprite.y+221;
+        playText.y = imageSprite.y + 221;
         this.app.stage.addChild(playText);
-        console.log(playText.y+playText.height);
+        console.log(playText.y + playText.height);
 
         const startButton = this.createButton(this.config.text.startButton, -1);
         startButton.y = playText.y + playText.height;
@@ -192,11 +192,19 @@ class QuizApp {
 
         const restartButton = this.createButton(this.config.text.restartButton, -1);
         restartButton.y = 530;
-        restartButton.x = (this.app.screen.width / 2) - (restartButton.width / 2);
+        restartButton.x = 33.75;
         restartButton.on('pointerdown', () => this.restartQuiz());
         this.app.stage.addChild(restartButton);
 
         this.createFadeInAnimation(restartButton);
+
+        const formButton = this.createButton("Início", -1);
+        formButton.y = 530;
+        formButton.x = 640 + 67.5;
+        formButton.on('pointerdown', () => window.location.replace("../index.html"));
+        this.app.stage.addChild(formButton);
+
+        this.createFadeInAnimation(formButton);
     }
 
     getMaturityLevelMessage() {
