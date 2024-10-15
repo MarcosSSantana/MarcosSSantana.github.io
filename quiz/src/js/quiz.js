@@ -202,7 +202,7 @@ class QuizApp {
         formButton.y = 530;
         formButton.x = 640 + 67.5;
         formButton.on('pointerdown', () => window.location.replace("../index.html"));
-        this.app.stage.addChild(formButton);
+        // this.app.stage.addChild(formButton);
 
         this.createFadeInAnimation(formButton);
     }
