@@ -1,241 +1,409 @@
 <!DOCTYPE html>
-<html>
-<title>Marcos Silva Santana</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-  html,
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Roboto", sans-serif
-  }
-</style>
-
-<body class="w3-light-grey">
-
-  <!-- Page Container -->
-  <div class="w3-content w3-margin-top" style="max-width:1400px;">
-
-    <!-- The Grid -->
-    <div class="w3-row-padding">
-
-      <!-- Left Column -->
-      <div class="w3-third">
-
-        <div class="w3-white w3-text-grey w3-card-4">
-          <div class="w3-display-container">
-            <img src="perfil.jpg" style="width:100%" alt="Avatar">
-            <div class="w3-display-bottomleft w3-container w3-text-black">
-              <h2 class="w3-white">Marcos Silva Santana</h2>
-            </div>
-          </div>
-          <div class="w3-container">
-            <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-light-green"></i>Game Developer</p>
-            <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-light-green"></i>Brazil</p>
-            <p><i
-                class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-light-green"></i>marcosshotokan10@gmail.com
-            </p>
-            <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-light-green"></i>+55 (16) 98162-8782</p>
-            <hr>
-
-            <!-- <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-light-green"></i>Skills</b>
-            </p>
-            <p>Program</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-light-green" style="width:90%">90%</div>
-            </div>
-
-            <p>Designer</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-light-green" style="width:60%">60%</div>
-            </div>
-            <p>User Experience</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-light-green" style="width:80%">80%</div>
-            </div>
-            <br> -->
-
-            <p class="w3-large w3-text-theme"><b><i
-                  class="fa fa-globe fa-fw w3-margin-right w3-text-light-green"></i>Languages</b></p>
-            <p>Português</p>
-            <div class="w3-light-grey w3-round-xlarge">
-              <div class="w3-round-xlarge w3-light-green" style="height:24px;width:100%"></div>
-            </div>
-            <p>English</p>
-            <div class="w3-light-grey w3-round-xlarge">
-              <div class="w3-round-xlarge w3-light-green" style="height:24px;width:50%"></div>
-            </div>
-            <p>Spanish</p>
-            <div class="w3-light-grey w3-round-xlarge">
-              <div class="w3-round-xlarge w3-light-green" style="height:24px;width:15%"></div>
-            </div>
-
-            <br>
-          </div>
-        </div><br>
-
-        <!-- End Left Column -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcos Silva Santana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    :root {
+      --primary: #1b2a36;
+      --secondary: #2e4a5a;
+      --accent: #4caf50;
+      --bg: #f5f6fa;
+      --card-bg: #fff;
+      --text: #222;
+      --muted: #6c757d;
+      --shadow: 0 4px 24px rgba(30,40,60,0.08);
+      --radius: 14px;
+      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: 'Roboto', Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+    }
+    body {
+      padding-top: 80px;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 64px;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 1px;
+      font-size: 1.2rem;
+      transition: background var(--transition);
+    }
+    header .contact {
+      font-size: 0.95rem;
+      color: #b2bec3;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 0 16px;
+    }
+    .profile {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+    .profile-img {
+      flex: 0 0 160px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 12px rgba(30,40,60,0.10);
+      border: 4px solid var(--card-bg);
+      background: #fff;
+    }
+    .profile-info {
+      flex: 1 1 300px;
+    }
+    .profile-info h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      margin: 0 0 8px 0;
+      color: var(--primary);
+    }
+    .profile-info p {
+      margin: 4px 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .profile-info .languages {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+    }
+    .profile-info .lang {
+      background: var(--secondary);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+      border-left: 5px solid var(--accent);
+      padding-left: 12px;
+      font-weight: 600;
+    }
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px 20px 24px;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.025);
+      box-shadow: 0 8px 32px rgba(30,40,60,0.13);
+      background: #f8fafc;
+    }
+    .card h5 {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      color: var(--secondary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    .card .tech {
+      color: var(--accent);
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 22px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(76,175,80,0.08);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition), box-shadow var(--transition), color var(--transition);
+    }
+    .card a:hover {
+      background: var(--secondary);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(30,40,60,0.13);
+      border-color: var(--secondary);
+    }
+    .card .year {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .card .desc {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 0;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .card-list .card:nth-child(1) { animation-delay: 0.1s; }
+    .card-list .card:nth-child(2) { animation-delay: 0.2s; }
+    .card-list .card:nth-child(3) { animation-delay: 0.3s; }
+    .card-list .card:nth-child(4) { animation-delay: 0.4s; }
+    .card-list .card:nth-child(5) { animation-delay: 0.5s; }
+    .card-list .card:nth-child(6) { animation-delay: 0.6s; }
+    .card-list .card:nth-child(7) { animation-delay: 0.7s; }
+    .card-list .card:nth-child(8) { animation-delay: 0.8s; }
+    .card-list .card:nth-child(9) { animation-delay: 0.9s; }
+    .card-list .card:nth-child(10) { animation-delay: 1.0s; }
+    .card-list .card:nth-child(11) { animation-delay: 1.1s; }
+    .card-list .card:nth-child(12) { animation-delay: 1.2s; }
+    .card-list .card:nth-child(13) { animation-delay: 1.3s; }
+    .card-list .card:nth-child(14) { animation-delay: 1.4s; }
+    .work-list, .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .work-card, .edu-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 20px 16px 20px;
+      transition: box-shadow var(--transition), background var(--transition);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    .work-card:hover, .edu-card:hover {
+      box-shadow: 0 8px 32px rgba(30,40,60,0.13);
+      background: #f8fafc;
+    }
+    .work-list .work-card:nth-child(1) { animation-delay: 0.1s; }
+    .work-list .work-card:nth-child(2) { animation-delay: 0.2s; }
+    .work-list .work-card:nth-child(3) { animation-delay: 0.3s; }
+    .work-list .work-card:nth-child(4) { animation-delay: 0.4s; }
+    .edu-list .edu-card:nth-child(1) { animation-delay: 0.1s; }
+    .edu-list .edu-card:nth-child(2) { animation-delay: 0.2s; }
+    .edu-list .edu-card:nth-child(3) { animation-delay: 0.3s; }
+    .footer {
+      margin-top: 48px;
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 32px 0 18px 0;
+      border-radius: var(--radius) var(--radius) 0 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+    .footer a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color var(--transition);
+    }
+    .footer a:hover {
+      color: var(--accent);
+    }
+    @media (max-width: 800px) {
+      .profile { flex-direction: column; align-items: flex-start; }
+      .profile-img { margin-bottom: 16px; }
+      .container { padding: 24px 4vw 0 4vw; }
+    }
+    @media (max-width: 500px) {
+      header { font-size: 1rem; padding: 0 10px; height: 54px; }
+      .profile-info h1 { font-size: 1.3rem; }
+      .section-title { font-size: 1.1rem; padding-left: 7px; }
+      .card { padding: 18px 10px 12px 10px; }
+      .work-card, .edu-card { padding: 12px 8px 8px 8px; }
+      .footer { font-size: 0.95rem; padding: 18px 0 10px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span>Marcos Silva Santana</span>
+    <span class="contact"><i class="fa fa-envelope"></i> marcosshotokan10@gmail.com</span>
+  </header>
+  <div class="container">
+    <section class="profile">
+      <img src="perfil.jpg" alt="Avatar" class="profile-img">
+      <div class="profile-info">
+        <h1>Marcos Silva Santana</h1>
+        <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-light-green"></i>Software Developer</p>
+        <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-light-green"></i>Araraquara - SP - Brazil</p>
+        <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-light-green"></i>+55 (16) 98162-8782</p>
+        <!-- <div class="languages">
+          <span class="lang">Portuguese</span>
+          <span class="lang">English</span>
+          <span class="lang">Spanish</span>
+        </div> -->
       </div>
-
-      <!-- Right Column -->
-      <div class="w3-twothird">
-
-        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-          <h2 class="w3-text-grey w3-padding-16"><i
-              class="fa fa-gamepad fa-fw w3-margin-right w3-xxlarge w3-text-light-green"></i>Games</h2>
-
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Scratch Card - PixiJS</b></h5>
-            <a href="https://marcosssantana.github.io/cartela-raspadinha/" target="_blank">Link Scratch Card game</a>
-            <hr>
-          </div>
-
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Video-bingo - PixiJS</b></h5>
-            <a href="https://marcosssantana.github.io/video-bingo/" target="_blank">Link Video Bingo game</a>
-            <hr>
-          </div>
-
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Match 3 - PixiJS, Typescript</b></h5>
-            <a href="https://marcosssantana.github.io/match3/" target="_blank">Link Match3 game</a>
-            <hr>
-          </div>
-
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Puzzle - PixiJS, Typescript</b></h5>
-            <a href="https://marcosssantana.github.io/puzzle/" target="_blank">Link Puzzle game</a>
-            <hr>
-          </div>
-
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Crash game mechanics - PixiJS, Typescript</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2023</h6>
-            <a href="https://marcosssantana.github.io/crash-soccer/" target="_blank">Link Crash game</a>
-            <hr>
-          </div>
-
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Prize roulette - Construct 3</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2021</h6>
-            <p>Roulette for distribution of prizes made for Contabeis company</p>
-            <a href="https://marcosssantana.github.io/club/" target="_blank">Link Roulette</a>
-            <hr>
-          </div>
-
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Wind Soldier - HTML5 mobile</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017</h6>
-            <a href="https://html5.gamedistribution.com/4086914c63db48a7a17f1b005cd0c53a/" target="_blank">Link Wind
-              Soldier</a>
-            <hr>
-          </div>
+    </section>
+    <section class="section">
+      <div class="section-title"><i class="fa fa-gamepad fa-fw w3-margin-right w3-xxlarge w3-text-light-green"></i>Projects</div>
+      <div class="card-list">
+        
+        <div class="card">
+          <h5>Candy Rain</h5>
+          <span class="tech">HTML5, CSS3, JavaScript, PixiJS, GSAP, Webpack, Typescript</span>
+          <a href="https://marcosssantana.github.io/candy-rain/" target="_blank">View Project</a>
         </div>
-
-        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-          <h2 class="w3-text-grey w3-padding-16"><i
-              class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-light-green"></i>Work Experience</h2>
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Game Developer / Esys Technology</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jul 2015 - <span
-                class="w3-tag w3-light-green w3-round">Current</span></h6>
-            <p>Responsible for the development of the programming and interface of the games and new technologies aiming
-              at the efficiency and performance of the environment where the games will be executed and integration with
-              the mathematical engines through API.</p>
-            <hr>
-          </div>
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Game Dev - Front End / Squadra Digital</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>May 2023 - Sep 2023</h6>
-            <p>Creation of games for the web (Design, Tutorial and game functionality)
-              HMTL, CSS, JS, Canvas, Pìxijs, Gsap, Typescript, Webpack, Nodejs, ReactJs;
-              Scenario Modeling and Level Design.</p>
-            <hr>
-          </div>
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>PHP Developer / Contábeis</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2021 - May 2023</h6>
-            <p>PHP, Composer, PHPmailer, PHP-encryption, Mysql, Docker compose, Bootstrap 5, DataTables, SweetAlert2,
-              Jquery, JavaScript, AdminLTE.</p>
-            <hr>
-          </div>
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Webmaster / Fast information telephony and tele service</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2014 - Jul 2015</h6>
-            <p>Development and support of the company website, developing with: PHP, Java Script, HTML 5, CSS 3, JSON,
-              MySql, MVC, Object Orientation, Bootstrap (CSS Framework) among others.</p>
-            <hr>
-          </div>
+        <div class="card">
+          <h5>Cartela Raspadinha</h5>
+          <span class="tech">HTML5, CSS3, JavaScript, PixiJS, GSAP</span>
+          <a href="https://marcosssantana.github.io/cartela-raspadinha/" target="_blank">View Project</a>
         </div>
-
-        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-          <h2 class="w3-text-grey w3-padding-16"><i
-              class="fa fa-mortar-board fa-fw w3-margin-right w3-xxlarge w3-text-light-green"></i>Education</h2>
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Universidade Paulista - UNIP</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2015 - 2020</h6>
-            <p>Analysis and systems development</p>
-            <hr>
-          </div>
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Senac São Paulo</b></h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2015</h6>
-            <p>Computer programming</p>
-            <hr>
-          </div>
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Federal Institute of Education, Science and Technology of São Paulo - IFSP</b>
-            </h5>
-            <h6 class="w3-text-light-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2012 - 2014</h6>
-            <p>Computer technician for computers</p><br>
-          </div>
+        <div class="card">
+          <h5>Club (Prize Roulette)</h5>
+          <span class="tech">Construct 3, JavaScript, HTML5, CSS3</span>
+          <a href="https://marcosssantana.github.io/club/" target="_blank">View Project</a>
         </div>
-
-        <!--
-        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-          <h2 class="w3-text-grey w3-padding-16"><i
-              class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-light-green"></i>Skills</h2>
-          <div class="w3-container">
-            <p>- Mobile Hybrid Development using Cordova, Ionic and Intel XDK and Android Native.</p>
-            <p>- Development of web interfaces using Javascript, JQuery, HTML 5, CSS 3, Bootstrap, XHTML.</p>
-            <p>- Development of systems in (JQuery, Ajax, PHP).</p>
-            <p>- Development of games in HTML5 and Framework PHASER .</p>
-            <p>- Editing and creating images (photoshop, gimp, inkscape).</p>
-            <p>- FTP client</p>
-            <p>- SGBD: MySQL</p>
-            <hr>
-          </div>
+        <div class="card">
+          <h5>Crash Soccer</h5>
+          <span class="tech">HTML5, CSS3, JavaScript, PixiJS, Typescript</span>
+          <a href="https://marcosssantana.github.io/crash-soccer/" target="_blank">View Project</a>
         </div>
-        -->
-
-        <!-- End Right Column -->
+        <div class="card">
+          <h5>Jogo da Velha</h5>
+          <span class="tech">HTML5, CSS3, JavaScript (Canvas)</span>
+          <a href="https://marcosssantana.github.io/jogo-da-velha/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+          <h5>Mach Words</h5>
+          <span class="tech">Angular, TypeScript, HTML5, CSS3</span>
+          <a href="https://marcosssantana.github.io/mach-words/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+          <h5>Match 3</h5>
+          <span class="tech">HTML5, CSS3, JavaScript, PixiJS, Typescript</span>
+          <a href="https://marcosssantana.github.io/match3/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+          <h5>Puzzle</h5>
+          <span class="tech">HTML5, CSS3, JavaScript, PixiJS, Typescript</span>
+          <a href="https://marcosssantana.github.io/puzzle/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+          <h5>Quiz</h5>
+          <span class="tech">HTML5, CSS3, JavaScript, PixiJS</span>
+          <a href="https://marcosssantana.github.io/quiz/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+          <h5>Quiz Contábeis</h5>
+          <span class="tech">Construct 3, JavaScript, HTML5, CSS3</span>
+          <a href="https://marcosssantana.github.io/quizcontabeis/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+          <h5>Tic Tac Toe</h5>
+          <span class="tech">HTML5, CSS3, JavaScript, PixiJS, Typescript</span>
+          <a href="https://marcosssantana.github.io/tic-tac-toe/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+          <h5>Video Bingo</h5>
+          <span class="tech">HTML5, CSS3, JavaScript, PixiJS, GSAP</span>
+          <a href="https://marcosssantana.github.io/video-bingo/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+          <h5>Wind Soldier</h5>
+          <span class="tech">HTML5, CSS3, JavaScript</span>
+          <a href="https://html5.gamedistribution.com/4086914c63db48a7a17f1b005cd0c53a/" target="_blank">View Project</a>
+        </div>
       </div>
-
-      <!-- End Grid -->
-    </div>
-
-    <!-- End Page Container -->
+    </section>
+    <section class="section">
+      <div class="section-title"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-light-green"></i>Work Experience</div>
+      <div class="work-list">
+        <div class="work-card">
+          <h5>Game Dev - Front End / Squadra Digital</h5>
+          <span class="year">May 2023 - Sep 2023</span>
+          <p class="desc">Creation of games for the web (Design, Tutorial and game functionality). HTML, CSS, JS, Canvas, PixiJS, Gsap, Typescript, Webpack, Nodejs, ReactJs; Scenario Modeling and Level Design.</p>
+        </div>
+        <div class="work-card">
+          <h5>Game Developer / Esys Technology</h5>
+          <span class="year">Jul 2015 - Dec 2021</span>
+          <p class="desc">Responsible for the development of the programming and interface of the games and new technologies aiming at the efficiency and performance of the environment where the games will be executed and integration with the mathematical engines through API.</p>
+        </div>
+        <div class="work-card">
+          <h5>PHP Developer / Contábeis</h5>
+          <span class="year">Dec 2021 - May 2023</span>
+          <p class="desc">PHP, Composer, PHPmailer, PHP-encryption, Mysql, Docker compose, Bootstrap 5, DataTables, SweetAlert2, Jquery, JavaScript, AdminLTE.</p>
+        </div>
+        <div class="work-card">
+          <h5>Webmaster / Fast information telephony and tele service</h5>
+          <span class="year">Dec 2014 - Jul 2015</span>
+          <p class="desc">Development and support of the company website, developing with: PHP, Java Script, HTML 5, CSS 3, JSON, MySql, MVC, Object Orientation, Bootstrap (CSS Framework) among others.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-title"><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xxlarge w3-text-light-green"></i>Education</div>
+      <div class="edu-list">
+        <div class="edu-card">
+          <h5>Universidade Paulista - UNIP</h5>
+          <span class="year">2015 - 2020</span>
+          <p class="desc">Analysis and systems development</p>
+        </div>
+        <div class="edu-card">
+          <h5>Senac São Paulo</h5>
+          <span class="year">2013 - 2015</span>
+          <p class="desc">Computer programming</p>
+        </div>
+        <div class="edu-card">
+          <h5>Federal Institute of Education, Science and Technology of São Paulo - IFSP</h5>
+          <span class="year">2012 - 2014</span>
+          <p class="desc">Computer technician for computers</p>
+        </div>
+      </div>
+    </section>
   </div>
-
-  <footer class="w3-container w3-light-green w3-center w3-margin-top">
+  <footer class="footer">
     <p>Find me on social media.</p>
-    <a href="https://www.facebook.com/marcos.shotokam" target="_blank"><i
-        class="fa fa-facebook-official w3-hover-opacity"></i></a>
-    <a href="https://www.instagram.com/marcossantana10" target="_blank"><i
-        class="fa fa-instagram w3-hover-opacity"></i></a>
-    <!-- <a href="https://twitter.com/marcos_shotokan" target="_blank"><i class="fa fa-twitter w3-hover-opacity"></i></a> -->
-    <a href="https://www.linkedin.com/in/marcos-santana-815385101/" target="_blank"><i
-        class="fa fa-linkedin w3-hover-opacity"></i></a>
+    <a href="https://www.facebook.com/marcos.shotokam" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <a href="https://www.instagram.com/marcossantana10" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/in/marcos-santana-815385101/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
   </footer>
-
 </body>
-
 </html>
