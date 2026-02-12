@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <!-- ── PWA / Viewport ── -->
@@ -16,7 +17,8 @@
   <meta name="apple-mobile-web-app-title" content="FitCore" />
 
   <!-- ── Favicon placeholder ── -->
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0a0f'/><text y='.9em' font-size='72' x='50%' text-anchor='middle' dominant-baseline='middle' dy='.1em'>⚡</text></svg>" />
+  <link rel="apple-touch-icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0a0f'/><text y='.9em' font-size='72' x='50%' text-anchor='middle' dominant-baseline='middle' dy='.1em'>⚡</text></svg>" />
 
   <title>FitCore</title>
 
@@ -28,25 +30,25 @@
 
     :root {
       /* Palette */
-      --bg:          #0a0a0f;
-      --surface:     #111118;
-      --surface2:    #18181f;
-      --border:      rgba(255,255,255,.07);
-      --accent:      #c8f45a;
-      --accent-dim:  rgba(200,244,90,.12);
-      --accent-glow: rgba(200,244,90,.35);
-      --text:        #f0f0f5;
-      --text-2:      #8888a0;
-      --text-3:      #55556a;
-      --red:         #ff5a6e;
-      --blue:        #5ab8ff;
-      --orange:      #ffb35a;
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #18181f;
+      --border: rgba(255, 255, 255, .07);
+      --accent: #c8f45a;
+      --accent-dim: rgba(200, 244, 90, .12);
+      --accent-glow: rgba(200, 244, 90, .35);
+      --text: #f0f0f5;
+      --text-2: #8888a0;
+      --text-3: #55556a;
+      --red: #ff5a6e;
+      --blue: #5ab8ff;
+      --orange: #ffb35a;
 
       /* Spacing */
-      --r-sm:  12px;
-      --r-md:  18px;
-      --r-lg:  24px;
-      --r-xl:  32px;
+      --r-sm: 12px;
+      --r-md: 18px;
+      --r-lg: 24px;
+      --r-xl: 32px;
 
       /* Nav */
       --nav-h: 76px;
@@ -56,9 +58,18 @@
       --safe-b: env(safe-area-inset-bottom, 0px);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { height: 100%; font-size: 16px; }
+    html {
+      height: 100%;
+      font-size: 16px;
+    }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -85,9 +96,18 @@
     /* ═══════════════════════════════════════════════
        SCROLLBAR (desktop)
     ═══════════════════════════════════════════════ */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--surface2);
+      border-radius: 2px;
+    }
 
     /* ═══════════════════════════════════════════════
        LAYOUT — MAIN
@@ -102,7 +122,9 @@
     /* Status bar color trick for iOS */
     #status-bar-fill {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: var(--safe-t);
       background: var(--bg);
       z-index: 100;
@@ -121,13 +143,23 @@
     ═══════════════════════════════════════════════ */
     .section {
       display: none;
-      animation: fadeSlideUp .32s cubic-bezier(.4,0,.2,1) both;
+      animation: fadeSlideUp .32s cubic-bezier(.4, 0, .2, 1) both;
     }
-    .section.active { display: block; }
+
+    .section.active {
+      display: block;
+    }
 
     @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ═══════════════════════════════════════════════
@@ -155,7 +187,7 @@
       text-transform: uppercase;
       color: var(--accent);
       background: var(--accent-dim);
-      border: 1px solid rgba(200,244,90,.25);
+      border: 1px solid rgba(200, 244, 90, .25);
       padding: 4px 10px;
       border-radius: 99px;
     }
@@ -170,7 +202,10 @@
       padding: 20px;
       transition: transform .15s, box-shadow .15s;
     }
-    .card:active { transform: scale(.985); }
+
+    .card:active {
+      transform: scale(.985);
+    }
 
     .cards-grid {
       display: grid;
@@ -206,8 +241,10 @@
     .workout-hero::before {
       content: '';
       position: absolute;
-      top: -40px; right: -40px;
-      width: 160px; height: 160px;
+      top: -40px;
+      right: -40px;
+      width: 160px;
+      height: 160px;
       background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
       pointer-events: none;
     }
@@ -271,7 +308,11 @@
       transition: transform .12s, box-shadow .2s;
       box-shadow: 0 0 28px var(--accent-glow);
     }
-    .btn-start:active { transform: scale(.95); box-shadow: none; }
+
+    .btn-start:active {
+      transform: scale(.95);
+      box-shadow: none;
+    }
 
     /* Stat mini cards */
     .stat-card {
@@ -281,17 +322,29 @@
     }
 
     .stat-card .stat-icon {
-      width: 38px; height: 38px;
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
       display: grid;
       place-items: center;
       margin-bottom: 4px;
     }
 
-    .stat-card .stat-icon.green  { background: rgba(200,244,90,.15); }
-    .stat-card .stat-icon.red    { background: rgba(255,90,110,.15); }
-    .stat-card .stat-icon.blue   { background: rgba(90,184,255,.15); }
-    .stat-card .stat-icon.orange { background: rgba(255,179,90,.15); }
+    .stat-card .stat-icon.green {
+      background: rgba(200, 244, 90, .15);
+    }
+
+    .stat-card .stat-icon.red {
+      background: rgba(255, 90, 110, .15);
+    }
+
+    .stat-card .stat-icon.blue {
+      background: rgba(90, 184, 255, .15);
+    }
+
+    .stat-card .stat-icon.orange {
+      background: rgba(255, 179, 90, .15);
+    }
 
     .stat-card .stat-val {
       font-family: 'Syne', sans-serif;
@@ -326,11 +379,18 @@
       margin-bottom: 8px;
       transition: transform .12s;
     }
-    .exercise-row:last-child { margin-bottom: 0; }
-    .exercise-row:active { transform: scale(.985); }
+
+    .exercise-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .exercise-row:active {
+      transform: scale(.985);
+    }
 
     .exercise-icon {
-      width: 44px; height: 44px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       background: var(--surface);
       border: 1px solid var(--border);
@@ -340,7 +400,9 @@
       font-size: 1.2rem;
     }
 
-    .exercise-info { flex: 1; }
+    .exercise-info {
+      flex: 1;
+    }
 
     .exercise-info .name {
       font-weight: 600;
@@ -354,7 +416,8 @@
     }
 
     .exercise-check {
-      width: 22px; height: 22px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       border: 2px solid var(--border);
       display: grid;
@@ -362,6 +425,7 @@
       cursor: pointer;
       transition: background .15s, border-color .15s;
     }
+
     .exercise-check.done {
       background: var(--accent);
       border-color: var(--accent);
@@ -391,7 +455,7 @@
       height: 100%;
       background: linear-gradient(90deg, var(--accent), #a8e832);
       border-radius: 3px;
-      transition: width .4s cubic-bezier(.4,0,.2,1);
+      transition: width .4s cubic-bezier(.4, 0, .2, 1);
     }
 
     /* ═══════════════════════════════════════════════
@@ -405,7 +469,10 @@
       overflow-x: auto;
       scrollbar-width: none;
     }
-    .week-strip::-webkit-scrollbar { display: none; }
+
+    .week-strip::-webkit-scrollbar {
+      display: none;
+    }
 
     .day-pill {
       flex-shrink: 0;
@@ -421,10 +488,12 @@
       transition: background .15s, border-color .15s;
       min-width: 54px;
     }
+
     .day-pill.active {
       background: var(--accent);
       border-color: var(--accent);
     }
+
     .day-pill .d-name {
       font-size: .65rem;
       letter-spacing: .08em;
@@ -432,21 +501,31 @@
       font-weight: 600;
       color: var(--text-2);
     }
-    .day-pill.active .d-name { color: #0a0a0f; }
+
+    .day-pill.active .d-name {
+      color: #0a0a0f;
+    }
 
     .day-pill .d-num {
       font-family: 'Syne', sans-serif;
       font-size: 1.1rem;
       font-weight: 800;
     }
-    .day-pill.active .d-num { color: #0a0a0f; }
+
+    .day-pill.active .d-num {
+      color: #0a0a0f;
+    }
 
     .day-pill .d-dot {
-      width: 5px; height: 5px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--accent);
     }
-    .day-pill.active .d-dot { background: rgba(10,10,15,.5); }
+
+    .day-pill.active .d-dot {
+      background: rgba(10, 10, 15, .5);
+    }
 
     /* Plan card */
     .plan-card {
@@ -462,9 +541,11 @@
     .plan-card::after {
       content: '';
       position: absolute;
-      top: 0; right: 0;
-      width: 80px; height: 80px;
-      background: radial-gradient(circle, rgba(200,244,90,.08) 0%, transparent 70%);
+      top: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(200, 244, 90, .08) 0%, transparent 70%);
     }
 
     .plan-card .tag {
@@ -477,10 +558,26 @@
       border-radius: 99px;
       margin-bottom: 10px;
     }
-    .tag-green  { color: var(--accent); background: var(--accent-dim); }
-    .tag-red    { color: var(--red);    background: rgba(255,90,110,.12); }
-    .tag-blue   { color: var(--blue);   background: rgba(90,184,255,.12); }
-    .tag-orange { color: var(--orange); background: rgba(255,179,90,.12); }
+
+    .tag-green {
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .tag-red {
+      color: var(--red);
+      background: rgba(255, 90, 110, .12);
+    }
+
+    .tag-blue {
+      color: var(--blue);
+      background: rgba(90, 184, 255, .12);
+    }
+
+    .tag-orange {
+      color: var(--orange);
+      background: rgba(255, 179, 90, .12);
+    }
 
     .plan-card h3 {
       font-family: 'Syne', sans-serif;
@@ -530,7 +627,10 @@
       gap: 12px;
       margin-bottom: 12px;
     }
-    .nutrition-row:last-child { margin-bottom: 0; }
+
+    .nutrition-row:last-child {
+      margin-bottom: 0;
+    }
 
     .nutrition-label {
       width: 70px;
@@ -549,7 +649,7 @@
     .nutrition-bar {
       height: 100%;
       border-radius: 4px;
-      transition: width .6s cubic-bezier(.4,0,.2,1);
+      transition: width .6s cubic-bezier(.4, 0, .2, 1);
     }
 
     .nutrition-val {
@@ -572,7 +672,8 @@
     }
 
     .avatar {
-      width: 86px; height: 86px;
+      width: 86px;
+      height: 86px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent) 0%, #5affc9 100%);
       display: grid;
@@ -582,7 +683,7 @@
       font-weight: 800;
       color: #0a0a0f;
       margin-bottom: 14px;
-      box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(200,244,90,.3);
+      box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(200, 244, 90, .3);
     }
 
     .profile-header h2 {
@@ -646,10 +747,14 @@
       cursor: pointer;
       transition: background .12s;
     }
-    .settings-row:active { background: var(--surface2); }
+
+    .settings-row:active {
+      background: var(--surface2);
+    }
 
     .settings-icon {
-      width: 36px; height: 36px;
+      width: 36px;
+      height: 36px;
       border-radius: 10px;
       background: var(--surface2);
       display: grid;
@@ -657,7 +762,9 @@
       flex-shrink: 0;
     }
 
-    .settings-info { flex: 1; }
+    .settings-info {
+      flex: 1;
+    }
 
     .settings-info .s-name {
       font-size: .9rem;
@@ -679,10 +786,12 @@
     ═══════════════════════════════════════════════ */
     nav#bottom-nav {
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: calc(var(--nav-h) + var(--safe-b));
       padding-bottom: var(--safe-b);
-      background: rgba(10,10,15,.88);
+      background: rgba(10, 10, 15, .88);
       backdrop-filter: blur(24px) saturate(1.5);
       -webkit-backdrop-filter: blur(24px) saturate(1.5);
       border-top: 1px solid var(--border);
@@ -715,10 +824,14 @@
       -webkit-tap-highlight-color: transparent;
       flex: 1;
     }
-    .nav-btn:active { background: rgba(255,255,255,.04); }
+
+    .nav-btn:active {
+      background: rgba(255, 255, 255, .04);
+    }
 
     .nav-icon {
-      width: 24px; height: 24px;
+      width: 24px;
+      height: 24px;
       display: grid;
       place-items: center;
       position: relative;
@@ -739,7 +852,8 @@
       content: '';
       position: absolute;
       bottom: -4px;
-      width: 4px; height: 4px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 6px var(--accent);
@@ -753,32 +867,41 @@
       color: var(--text-3);
       transition: color .2s;
     }
-    .nav-btn.active .nav-label { color: var(--accent); }
+
+    .nav-btn.active .nav-label {
+      color: var(--accent);
+    }
 
     /* ═══════════════════════════════════════════════
        INSTALL BANNER / MODAL
     ═══════════════════════════════════════════════ */
     #install-banner {
       position: fixed;
-      left: 12px; right: 12px;
+      left: 12px;
+      right: 12px;
       bottom: calc(var(--nav-h) + var(--safe-b) + 10px);
       background: var(--surface2);
-      border: 1px solid rgba(200,244,90,.2);
+      border: 1px solid rgba(200, 244, 90, .2);
       border-radius: var(--r-xl);
       padding: 16px 18px;
       display: flex;
       align-items: center;
       gap: 14px;
       z-index: 95;
-      box-shadow: 0 8px 40px rgba(0,0,0,.6), 0 0 0 1px var(--accent-dim);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .6), 0 0 0 1px var(--accent-dim);
       transform: translateY(120%);
       opacity: 0;
-      transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s;
+      transition: transform .4s cubic-bezier(.34, 1.56, .64, 1), opacity .3s;
     }
-    #install-banner.visible { transform: translateY(0); opacity: 1; }
+
+    #install-banner.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
 
     .install-icon {
-      width: 46px; height: 46px;
+      width: 46px;
+      height: 46px;
       border-radius: 14px;
       background: linear-gradient(135deg, var(--accent) 0%, #5affc9 100%);
       display: grid;
@@ -787,7 +910,9 @@
       font-size: 1.4rem;
     }
 
-    .install-text { flex: 1; }
+    .install-text {
+      flex: 1;
+    }
 
     .install-text strong {
       display: block;
@@ -822,7 +947,10 @@
       white-space: nowrap;
       transition: opacity .15s;
     }
-    .btn-install:active { opacity: .8; }
+
+    .btn-install:active {
+      opacity: .8;
+    }
 
     .btn-close-banner {
       background: transparent;
@@ -833,13 +961,16 @@
       border-radius: 6px;
       transition: color .15s;
     }
-    .btn-close-banner:active { color: var(--text); }
+
+    .btn-close-banner:active {
+      color: var(--text);
+    }
 
     /* iOS instruction modal */
     #ios-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.75);
+      background: rgba(0, 0, 0, .75);
       backdrop-filter: blur(8px);
       z-index: 200;
       display: flex;
@@ -850,7 +981,11 @@
       pointer-events: none;
       transition: opacity .25s;
     }
-    #ios-modal.visible { opacity: 1; pointer-events: all; }
+
+    #ios-modal.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
 
     .ios-modal-card {
       width: 100%;
@@ -859,9 +994,12 @@
       border-radius: var(--r-xl);
       padding: 24px;
       transform: translateY(40px);
-      transition: transform .35s cubic-bezier(.34,1.3,.64,1);
+      transition: transform .35s cubic-bezier(.34, 1.3, .64, 1);
     }
-    #ios-modal.visible .ios-modal-card { transform: translateY(0); }
+
+    #ios-modal.visible .ios-modal-card {
+      transform: translateY(0);
+    }
 
     .ios-modal-card h3 {
       font-family: 'Syne', sans-serif;
@@ -884,10 +1022,11 @@
     }
 
     .ios-step-num {
-      width: 24px; height: 24px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: var(--accent-dim);
-      border: 1px solid rgba(200,244,90,.3);
+      border: 1px solid rgba(200, 244, 90, .3);
       color: var(--accent);
       font-family: 'Syne', sans-serif;
       font-weight: 700;
@@ -911,13 +1050,21 @@
       font-size: .9rem;
       cursor: pointer;
     }
-    .btn-close-modal:active { opacity: .8; }
+
+    .btn-close-modal:active {
+      opacity: .8;
+    }
 
     /* ═══════════════════════════════════════════════
        UTILITY
     ═══════════════════════════════════════════════ */
-    .mt-4  { margin-top: 16px; }
-    .mb-0  { margin-bottom: 0; }
+    .mt-4 {
+      margin-top: 16px;
+    }
+
+    .mb-0 {
+      margin-bottom: 0;
+    }
   </style>
 </head>
 
@@ -935,7 +1082,9 @@
 
         <div class="page-header">
           <div>
-            <div style="font-size:.75rem;color:var(--text-2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Hoje</div>
+            <div
+              style="font-size:.75rem;color:var(--text-2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">
+              Hoje</div>
             <h1>Treino</h1>
           </div>
           <span class="badge">Dia 4 / 7</span>
@@ -962,7 +1111,7 @@
           </div>
           <button class="btn-start" onclick="startWorkout()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-              <polygon points="5,3 19,12 5,21"/>
+              <polygon points="5,3 19,12 5,21" />
             </svg>
             Iniciar Treino
           </button>
@@ -984,7 +1133,7 @@
           <div class="card stat-card">
             <div class="stat-icon green">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
               </svg>
             </div>
             <div class="stat-val" style="color:var(--accent)">1.240</div>
@@ -993,8 +1142,8 @@
           <div class="card stat-card">
             <div class="stat-icon red">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.2">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                <path d="M12 6v6l4 2"/>
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+                <path d="M12 6v6l4 2" />
               </svg>
             </div>
             <div class="stat-val" style="color:var(--red)">3h 12m</div>
@@ -1003,7 +1152,7 @@
           <div class="card stat-card">
             <div class="stat-icon blue">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.2">
-                <path d="M6.5 6.5h11M6.5 17.5h11M12 2v20"/>
+                <path d="M6.5 6.5h11M6.5 17.5h11M12 2v20" />
               </svg>
             </div>
             <div class="stat-val" style="color:var(--blue)">24</div>
@@ -1012,7 +1161,7 @@
           <div class="card stat-card">
             <div class="stat-icon orange">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2">
-                <path d="M12 20V10M18 20V4M6 20v-4"/>
+                <path d="M12 20V10M18 20V4M6 20v-4" />
               </svg>
             </div>
             <div class="stat-val" style="color:var(--orange)">+8%</div>
@@ -1031,7 +1180,7 @@
             </div>
             <div class="exercise-check done" onclick="toggleCheck(this)">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="3">
-                <polyline points="20,6 9,17 4,12"/>
+                <polyline points="20,6 9,17 4,12" />
               </svg>
             </div>
           </div>
@@ -1043,7 +1192,7 @@
             </div>
             <div class="exercise-check done" onclick="toggleCheck(this)">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="3">
-                <polyline points="20,6 9,17 4,12"/>
+                <polyline points="20,6 9,17 4,12" />
               </svg>
             </div>
           </div>
@@ -1055,7 +1204,7 @@
             </div>
             <div class="exercise-check" onclick="toggleCheck(this)">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="3">
-                <polyline points="20,6 9,17 4,12"/>
+                <polyline points="20,6 9,17 4,12" />
               </svg>
             </div>
           </div>
@@ -1067,7 +1216,7 @@
             </div>
             <div class="exercise-check" onclick="toggleCheck(this)">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="3">
-                <polyline points="20,6 9,17 4,12"/>
+                <polyline points="20,6 9,17 4,12" />
               </svg>
             </div>
           </div>
@@ -1079,7 +1228,7 @@
             </div>
             <div class="exercise-check" onclick="toggleCheck(this)">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="3">
-                <polyline points="20,6 9,17 4,12"/>
+                <polyline points="20,6 9,17 4,12" />
               </svg>
             </div>
           </div>
@@ -1091,7 +1240,7 @@
             </div>
             <div class="exercise-check" onclick="toggleCheck(this)">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="3">
-                <polyline points="20,6 9,17 4,12"/>
+                <polyline points="20,6 9,17 4,12" />
               </svg>
             </div>
           </div>
@@ -1106,7 +1255,9 @@
 
         <div class="page-header">
           <div>
-            <div style="font-size:.75rem;color:var(--text-2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Seu</div>
+            <div
+              style="font-size:.75rem;color:var(--text-2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">
+              Seu</div>
             <h1>Plano</h1>
           </div>
           <span class="badge">6 semanas</span>
@@ -1157,21 +1308,21 @@
             <div class="plan-meta">
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 6v6l4 2"/>
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
                 </svg>
                 52 min
               </div>
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                 </svg>
                 380 kcal
               </div>
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  <path d="M9 9h6M9 12h6M9 15h4"/>
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M9 9h6M9 12h6M9 15h4" />
                 </svg>
                 6 exerc.
               </div>
@@ -1185,7 +1336,8 @@
           <div class="nutrition-row">
             <span class="nutrition-label">Proteínas</span>
             <div class="nutrition-bar-wrap">
-              <div class="nutrition-bar" style="width:78%;background:linear-gradient(90deg,var(--accent),#a8e832)"></div>
+              <div class="nutrition-bar" style="width:78%;background:linear-gradient(90deg,var(--accent),#a8e832)">
+              </div>
             </div>
             <span class="nutrition-val" style="color:var(--accent)">156g</span>
           </div>
@@ -1199,7 +1351,8 @@
           <div class="nutrition-row">
             <span class="nutrition-label">Gorduras</span>
             <div class="nutrition-bar-wrap">
-              <div class="nutrition-bar" style="width:45%;background:linear-gradient(90deg,var(--orange),#ffda5a)"></div>
+              <div class="nutrition-bar" style="width:45%;background:linear-gradient(90deg,var(--orange),#ffda5a)">
+              </div>
             </div>
             <span class="nutrition-val" style="color:var(--orange)">54g</span>
           </div>
@@ -1222,14 +1375,14 @@
             <div class="plan-meta">
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 6v6l4 2"/>
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
                 </svg>
                 65 min
               </div>
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                 </svg>
                 460 kcal
               </div>
@@ -1242,14 +1395,14 @@
             <div class="plan-meta">
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 6v6l4 2"/>
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
                 </svg>
                 55 min
               </div>
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                 </svg>
                 410 kcal
               </div>
@@ -1262,14 +1415,14 @@
             <div class="plan-meta">
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 6v6l4 2"/>
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
                 </svg>
                 35 min
               </div>
               <div class="plan-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                 </svg>
                 320 kcal
               </div>
@@ -1309,8 +1462,8 @@
           <div class="settings-row">
             <div class="settings-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
               </svg>
             </div>
             <div class="settings-info">
@@ -1319,14 +1472,14 @@
             </div>
             <div class="chevron">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9,18 15,12 9,6"/>
+                <polyline points="9,18 15,12 9,6" />
               </svg>
             </div>
           </div>
           <div class="settings-row">
             <div class="settings-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
               </svg>
             </div>
             <div class="settings-info">
@@ -1335,14 +1488,14 @@
             </div>
             <div class="chevron">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9,18 15,12 9,6"/>
+                <polyline points="9,18 15,12 9,6" />
               </svg>
             </div>
           </div>
           <div class="settings-row">
             <div class="settings-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2">
-                <path d="M18 20V10M12 20V4M6 20v-6"/>
+                <path d="M18 20V10M12 20V4M6 20v-6" />
               </svg>
             </div>
             <div class="settings-info">
@@ -1351,15 +1504,15 @@
             </div>
             <div class="chevron">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9,18 15,12 9,6"/>
+                <polyline points="9,18 15,12 9,6" />
               </svg>
             </div>
           </div>
           <div class="settings-row">
             <div class="settings-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" stroke-width="2">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
               </svg>
             </div>
             <div class="settings-info">
@@ -1368,14 +1521,14 @@
             </div>
             <div class="chevron">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9,18 15,12 9,6"/>
+                <polyline points="9,18 15,12 9,6" />
               </svg>
             </div>
           </div>
           <div class="settings-row" onclick="showInstallInstructions()">
             <div class="settings-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
-                <path d="M12 2v13M8 11l4 4 4-4M20 18H4"/>
+                <path d="M12 2v13M8 11l4 4 4-4M20 18H4" />
               </svg>
             </div>
             <div class="settings-info">
@@ -1384,7 +1537,7 @@
             </div>
             <div class="chevron">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9,18 15,12 9,6"/>
+                <polyline points="9,18 15,12 9,6" />
               </svg>
             </div>
           </div>
@@ -1401,13 +1554,14 @@
 
         <button class="nav-btn active" data-section="treino" onclick="navigate('treino', this)" aria-label="Treino">
           <div class="nav-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6.5 6.5h11M6.5 17.5h11"/>
-              <circle cx="6.5" cy="6.5" r="2.5"/>
-              <circle cx="17.5" cy="6.5" r="2.5"/>
-              <circle cx="6.5" cy="17.5" r="2.5"/>
-              <circle cx="17.5" cy="17.5" r="2.5"/>
-              <line x1="12" y1="6.5" x2="12" y2="17.5"/>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M6.5 6.5h11M6.5 17.5h11" />
+              <circle cx="6.5" cy="6.5" r="2.5" />
+              <circle cx="17.5" cy="6.5" r="2.5" />
+              <circle cx="6.5" cy="17.5" r="2.5" />
+              <circle cx="17.5" cy="17.5" r="2.5" />
+              <line x1="12" y1="6.5" x2="12" y2="17.5" />
             </svg>
           </div>
           <span class="nav-label">Treino</span>
@@ -1415,16 +1569,17 @@
 
         <button class="nav-btn" data-section="plano" onclick="navigate('plano', this)" aria-label="Plano">
           <div class="nav-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-              <line x1="8" y1="14" x2="8" y2="14"/>
-              <line x1="12" y1="14" x2="12" y2="14"/>
-              <line x1="16" y1="14" x2="16" y2="14"/>
-              <line x1="8" y1="18" x2="8" y2="18"/>
-              <line x1="12" y1="18" x2="12" y2="18"/>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+              <line x1="8" y1="14" x2="8" y2="14" />
+              <line x1="12" y1="14" x2="12" y2="14" />
+              <line x1="16" y1="14" x2="16" y2="14" />
+              <line x1="8" y1="18" x2="8" y2="18" />
+              <line x1="12" y1="18" x2="12" y2="18" />
             </svg>
           </div>
           <span class="nav-label">Plano</span>
@@ -1432,9 +1587,10 @@
 
         <button class="nav-btn" data-section="perfil" onclick="navigate('perfil', this)" aria-label="Perfil">
           <div class="nav-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
             </svg>
           </div>
           <span class="nav-label">Perfil</span>
@@ -1457,8 +1613,8 @@
       <button class="btn-install" id="btn-install-prompt">Instalar</button>
       <button class="btn-close-banner" id="btn-dismiss-banner" aria-label="Fechar">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
     </div>
@@ -1475,7 +1631,8 @@
       </h3>
       <div class="ios-step">
         <div class="ios-step-num">1</div>
-        <div>Toque no botão <strong>Compartilhar</strong> <span style="font-size:1em">⎏</span> na barra inferior do Safari.</div>
+        <div>Toque no botão <strong>Compartilhar</strong> <span style="font-size:1em">⎏</span> na barra inferior do
+          Safari.</div>
       </div>
       <div class="ios-step">
         <div class="ios-step-num">2</div>
@@ -1525,8 +1682,8 @@
 
     function updateProgress() {
       const total = document.querySelectorAll('.exercise-check').length;
-      const done  = document.querySelectorAll('.exercise-check.done').length;
-      const pct   = Math.round((done / total) * 100);
+      const done = document.querySelectorAll('.exercise-check.done').length;
+      const pct = Math.round((done / total) * 100);
       document.getElementById('progress-fill').style.width = pct + '%';
     }
 
@@ -1549,13 +1706,13 @@
        PLANO — seleção de dia
     ════════════════════════════════════ */
     const planData = [
-      { tag: 'tag-red',    tagLabel: 'Lower Body', title: 'Pernas &amp; Glúteos', desc: 'Squat, leg press e isoladores. Alta densidade e tempo de tensão.', min: '65 min', kcal: '460 kcal' },
-      { tag: 'tag-blue',   tagLabel: 'Pull Day',   title: 'Costas &amp; Bíceps',  desc: 'Remadas, pulldowns e trabalho de força para cadeia posterior.',  min: '55 min', kcal: '410 kcal' },
-      { tag: 'tag-green',  tagLabel: 'Upper Body', title: 'Peito &amp; Ombro',    desc: 'Foco em força e hipertrofia para região anterior.', min: '52 min', kcal: '380 kcal' },
-      { tag: 'tag-orange', tagLabel: 'Cardio',     title: 'HIIT &amp; Core',      desc: 'Intervalo de alta intensidade + plancha e trabalho abdominal.', min: '35 min', kcal: '320 kcal' },
-      { tag: 'tag-blue',   tagLabel: 'Push Day',   title: 'Ombro &amp; Tríceps',  desc: 'Volume alto com ênfase em deltóide lateral e cabeça longa do tríceps.', min: '48 min', kcal: '350 kcal' },
-      { tag: null,         tagLabel: 'Descanso',   title: 'Recuperação Ativa',    desc: 'Alongamento, mobilidade e caminhada leve. Essencial para o crescimento.', min: '30 min', kcal: '80 kcal'  },
-      { tag: null,         tagLabel: 'Descanso',   title: 'Dia Livre',            desc: 'Descanse. Seu corpo cresce durante a recuperação!', min: '—', kcal: '—' },
+      { tag: 'tag-red', tagLabel: 'Lower Body', title: 'Pernas &amp; Glúteos', desc: 'Squat, leg press e isoladores. Alta densidade e tempo de tensão.', min: '65 min', kcal: '460 kcal' },
+      { tag: 'tag-blue', tagLabel: 'Pull Day', title: 'Costas &amp; Bíceps', desc: 'Remadas, pulldowns e trabalho de força para cadeia posterior.', min: '55 min', kcal: '410 kcal' },
+      { tag: 'tag-green', tagLabel: 'Upper Body', title: 'Peito &amp; Ombro', desc: 'Foco em força e hipertrofia para região anterior.', min: '52 min', kcal: '380 kcal' },
+      { tag: 'tag-orange', tagLabel: 'Cardio', title: 'HIIT &amp; Core', desc: 'Intervalo de alta intensidade + plancha e trabalho abdominal.', min: '35 min', kcal: '320 kcal' },
+      { tag: 'tag-blue', tagLabel: 'Push Day', title: 'Ombro &amp; Tríceps', desc: 'Volume alto com ênfase em deltóide lateral e cabeça longa do tríceps.', min: '48 min', kcal: '350 kcal' },
+      { tag: null, tagLabel: 'Descanso', title: 'Recuperação Ativa', desc: 'Alongamento, mobilidade e caminhada leve. Essencial para o crescimento.', min: '30 min', kcal: '80 kcal' },
+      { tag: null, tagLabel: 'Descanso', title: 'Dia Livre', desc: 'Descanse. Seu corpo cresce durante a recuperação!', min: '—', kcal: '—' },
     ];
 
     function selectDay(pillEl) {
@@ -1651,7 +1808,7 @@
 
     function isInStandaloneMode() {
       return window.navigator.standalone === true ||
-             window.matchMedia('(display-mode: standalone)').matches;
+        window.matchMedia('(display-mode: standalone)').matches;
     }
 
     function showInstallInstructions() {
@@ -1713,4 +1870,5 @@
     }
   </script>
 </body>
+
 </html>
