@@ -1056,6 +1056,109 @@
     }
 
     /* ═══════════════════════════════════════════════
+       TOP BAR — install button
+    ═══════════════════════════════════════════════ */
+    #top-bar {
+      position: fixed;
+      top: var(--safe-t);
+      left: 0;
+      right: 0;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 16px;
+      z-index: 80;
+      pointer-events: none;
+      /* cliques passam pra baixo exceto no botão */
+    }
+
+    #btn-top-install {
+      pointer-events: all;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--surface2);
+      border: 1px solid rgba(200, 244, 90, .22);
+      border-radius: 99px;
+      padding: 7px 14px 7px 10px;
+      cursor: pointer;
+      transition: background .15s, box-shadow .2s, transform .12s;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, .4);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #btn-top-install:hover {
+      background: rgba(200, 244, 90, .1);
+      box-shadow: 0 0 18px var(--accent-glow);
+    }
+
+    #btn-top-install:active {
+      transform: scale(.93);
+      box-shadow: none;
+    }
+
+    /* Ícone de download animado */
+    #btn-top-install .ti-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent) 0%, #5affc9 100%);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    #btn-top-install .ti-icon svg {
+      animation: bounceDown 2s ease-in-out infinite;
+    }
+
+    @keyframes bounceDown {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(2px);
+      }
+    }
+
+    #btn-top-install .ti-label {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .75rem;
+      letter-spacing: .04em;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* Pulso de atenção na primeira carga */
+    @keyframes pulseRing {
+      0% {
+        box-shadow: 0 0 0 0 rgba(200, 244, 90, .5);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(200, 244, 90, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(200, 244, 90, 0);
+      }
+    }
+
+    #btn-top-install.pulse {
+      animation: pulseRing 1.6s ease-out 3;
+    }
+
+    /* Ajusta o padding-top do main para não ficar atrás da top bar */
+    main {
+      padding-top: 52px;
+    }
+
+    /* ═══════════════════════════════════════════════
        UTILITY
     ═══════════════════════════════════════════════ */
     .mt-4 {
@@ -1071,6 +1174,23 @@
 <body>
   <!-- Status bar fill for iOS notch -->
   <div id="status-bar-fill"></div>
+
+  <!-- ══════════════════════════════
+       TOP BAR — botão instalar
+  ══════════════════════════════ -->
+  <div id="top-bar">
+    <button id="btn-top-install" onclick="onTopInstallClick()" aria-label="Instalar app">
+      <div class="ti-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v13" />
+          <polyline points="8,11 12,15 16,11" />
+          <line x1="4" y1="19" x2="20" y2="19" />
+        </svg>
+      </div>
+      <span class="ti-label">Instalar</span>
+    </button>
+  </div>
 
   <div id="app">
     <main id="main-content">
@@ -1651,6 +1771,35 @@
   ══════════════════════════════ -->
   <script>
     /* ════════════════════════════════════
+       TOP INSTALL BUTTON
+    ════════════════════════════════════ */
+    function onTopInstallClick() {
+      if (isIOS() && !isInStandaloneMode()) {
+        document.getElementById('ios-modal').classList.add('visible');
+      } else if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(({ outcome }) => {
+          deferredPrompt = null;
+          if (outcome === 'accepted') {
+            hideTopInstallBtn();
+            localStorage.setItem(BANNER_KEY, '1');
+          }
+        });
+      } else {
+        // fallback genérico (ex: Chrome já instalado, outro browser)
+        document.getElementById('ios-modal').classList.add('visible');
+      }
+    }
+
+    function hideTopInstallBtn() {
+      const btn = document.getElementById('btn-top-install');
+      btn.style.transition = 'opacity .3s, transform .3s';
+      btn.style.opacity = '0';
+      btn.style.transform = 'scale(.8)';
+      setTimeout(() => { btn.style.display = 'none'; }, 320);
+    }
+
+    /* ════════════════════════════════════
        NAV — troca de seções
     ════════════════════════════════════ */
     function navigate(sectionId, btnEl) {
@@ -1764,7 +1913,11 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      // Só mostra se não foi dispensado
+      // Pulso de atenção no botão do topo
+      setTimeout(() => {
+        document.getElementById('btn-top-install').classList.add('pulse');
+      }, 800);
+      // Só mostra banner inferior se não foi dispensado
       if (!localStorage.getItem(BANNER_KEY)) {
         setTimeout(() => showInstallBanner(), 3000);
       }
@@ -1835,7 +1988,17 @@
 
     // Mostra banner iOS automaticamente (se aplicável)
     window.addEventListener('load', () => {
+      // Esconde botão do topo se já está instalado como PWA
+      if (isInStandaloneMode()) {
+        hideTopInstallBtn();
+      }
+
       if (isIOS() && !isInStandaloneMode() && !localStorage.getItem(BANNER_KEY)) {
+        // Pulso de atenção no botão do topo após 1s
+        setTimeout(() => {
+          document.getElementById('btn-top-install').classList.add('pulse');
+        }, 1000);
+
         setTimeout(() => {
           // Para iOS, usa banner com instrução
           const banner = document.getElementById('install-banner');
@@ -1855,6 +2018,7 @@
     window.addEventListener('appinstalled', () => {
       deferredPrompt = null;
       hideInstallBanner();
+      hideTopInstallBtn();
       localStorage.setItem(BANNER_KEY, '1');
     });
 
