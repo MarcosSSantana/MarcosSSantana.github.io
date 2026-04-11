@@ -1,35 +1,156 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
-	<head>
-		<meta charset="UTF-8">
-		<style>
-			:root {
+
+<head>
+	<meta charset="UTF-8">
+	<style>
+		:root {
 			--primary-red: #ff3131;
 			--dark-red: #8b0000;
 			--bg-dark: #0a0a0a;
 			--border-red: #4d0a0a;
 			--card-bg: rgba(18, 18, 18, 0.98);
 			--text-gray: #d0d0d0;
-			--header-bg: rgba(18, 18, 18, 0.98); /* Cinza claro para contraste */
-			}
-			#roadmap-popup {
-			position: fixed;
-			top: 0; left: 0; width: 100%; height: 100%;
+			--header-bg: rgba(18, 18, 18, 0.98);
+			/* Cinza claro para contraste */
+		}
+
+		html,
+		#roadmap-popup,
+		.container {
+			scrollbar-width: thin;
+			scrollbar-color: var(--primary-red) var(--bg-dark);
+		}
+
+		html::-webkit-scrollbar,
+		#roadmap-popup::-webkit-scrollbar,
+		.container::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		html::-webkit-scrollbar-track,
+		#roadmap-popup::-webkit-scrollbar-track,
+		.container::-webkit-scrollbar-track {
+			background: var(--bg-dark);
+			border-radius: 4px;
+		}
+
+		html::-webkit-scrollbar-thumb,
+		#roadmap-popup::-webkit-scrollbar-thumb,
+		.container::-webkit-scrollbar-thumb {
+			background: var(--primary-red);
+			border-radius: 4px;
+		}
+
+		html::-webkit-scrollbar-corner,
+		#roadmap-popup::-webkit-scrollbar-corner {
+			background: var(--bg-dark);
+		}
+
+		.page-header {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+			align-items: center;
+			gap: 8px 16px;
+			margin: 0 -20px 8px -20px;
+			/* padding: 8px 20px 12px 20px; */
+			position: sticky;
+			top: -5px;
+			z-index: 25;
+			/* background: rgba(10, 10, 10, 0.94);
+			backdrop-filter: blur(10px); */
+			-webkit-backdrop-filter: blur(10px);
+			border-bottom: 2px solid var(--primary-red);
+			box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
 			background: url('fundo.png');
-			display: flex; justify-content: center;
-			z-index: 10000; overflow-y: auto;
+		}
+
+		.page-header-spacer {
+			grid-column: 1;
+			min-width: 0;
+		}
+
+		.page-header .navbar-brand {
+			grid-column: 2;
+			justify-self: center;
+		}
+
+		.page-header>.btn-prev {
+			grid-column: 3;
+			justify-self: end;
+			align-self: center;
+			text-align: center;
+			margin: 20px;
+		}
+
+		.btn-prev {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+			font-size: 0.65rem;
+			font-weight: bold;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--text-gray);
+			padding: 0.5rem 1rem;
+			border: 1px solid var(--border-red);
+			border-bottom-width: 2px;
+			border-radius: 0;
+			background: linear-gradient(180deg, #1c1818, #121010);
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+			text-decoration: none;
+			transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.btn-prev:hover {
+			color: #fff;
+			border-color: var(--primary-red);
+			background: linear-gradient(180deg, #221818, #161010);
+			box-shadow: 0 0 12px rgba(255, 49, 49, 0.25);
+		}
+
+		.navbar-logo {
+			display: block;
+			margin: 0 auto;
+			height: 130px;
+			width: auto;
+			max-width: 100%;
+			transition: height 0.28s ease, max-height 0.28s ease;
+		}
+
+		.page-header.is-scrolled .navbar-logo {
+			height: 80px;
+			max-height: 80px;
+		}
+
+		#roadmap-popup {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url('fundo.png');
+			display: flex;
+			justify-content: center;
+			z-index: 10000;
+			overflow-y: auto;
 			padding: 30px 0;
 			font-family: 'Verdana', sans-serif;
-			}
-			.container {
-			width: 100%; max-width: 1000px;
-			padding: 20px; position: relative;
-			}
-			/* LINHA CENTRAL */
-			.timeline {
+		}
+
+		.container {
+			width: 100%;
+			max-width: 1000px;
+			padding: 0px 20px;
 			position: relative;
-			}
-			.timeline::before {
+		}
+
+		/* LINHA CENTRAL */
+		.timeline {
+			position: relative;
+		}
+
+		.timeline::before {
 			content: "";
 			position: absolute;
 			top: 0;
@@ -39,9 +160,10 @@
 			background: var(--primary-red);
 			transform: translateX(-50%);
 			z-index: 1;
-			}
-			/* CARDS */
-			.update-card {
+		}
+
+		/* CARDS */
+		.update-card {
 			width: 85%;
 			border: 4px solid var(--border-red);
 			background: var(--card-bg);
@@ -50,12 +172,14 @@
 			padding: 15px;
 			position: relative;
 			z-index: 2;
-			}	
-			/* ===== PONTOS NA LINHA ===== */
-			.update-card::after {
+		}
+
+		/* ===== PONTOS NA LINHA ===== */
+		.update-card::after {
 			content: "";
 			position: absolute;
-			top: 51%; /*  meio do card */
+			top: 51%;
+			/*  meio do card */
 			width: 14px;
 			height: 14px;
 			background: var(--primary-red);
@@ -63,30 +187,48 @@
 			transform: translateY(-51%);
 			box-shadow: 0 0 10px var(--primary-red);
 			z-index: 3;
-			}
-			/* POSIÇÃO NA LINHA */
-			.card-left::after {
-			right: -12px; /* metade do ponto */
-			}
-			.card-right::after {
+		}
+
+		/* POSIÇÃO NA LINHA */
+		.card-left::after {
+			right: -12px;
+			/* metade do ponto */
+		}
+
+		.card-right::after {
 			left: -12px;
-			}
-			/* PRIMEIRO VERDE */
-			.update-card:first-child::after {
+		}
+
+		/* PRIMEIRO VERDE */
+		.update-card:first-child::after {
 			background: #00ff00;
 			box-shadow: 0 0 10px #00ff00;
-			}
-			.close-x {
-			position: fixed; top: 20px; right: 40px;
-			color: white; font-size: 40px; cursor: pointer; z-index: 10001;
-			}
-			.main-title {
-			text-align: center; color: white; text-transform: uppercase;
-			letter-spacing: 4px; margin-top: 0; margin-bottom: 20px; font-size: 2rem;
+		}
+
+		.close-x {
+			position: fixed;
+			top: 20px;
+			right: 40px;
+			color: white;
+			font-size: 40px;
+			cursor: pointer;
+			z-index: 10001;
+			line-height: 1;
+		}
+
+		.main-title {
+			text-align: center;
+			color: white;
+			text-transform: uppercase;
+			letter-spacing: 4px;
+			margin-top: 0;
+			margin-bottom: 20px;
+			font-size: 2rem;
 			text-shadow: 0 0 15px var(--primary-red);
-			}
-			/* Estrutura de Cards Compactos */
-			.update-card {
+		}
+
+		/* Estrutura de Cards Compactos */
+		.update-card {
 			width: 45%;
 			border: 4px solid var(--border-red);
 			background: var(--card-bg);
@@ -94,25 +236,56 @@
 			margin-bottom: 40px;
 			padding: 15px;
 			position: relative;
-			box-shadow: 0 0 20px rgba(0,0,0,0.5);
-			}
-			/* Intercalado (Esquerda / Direita) */
-			.card-left { margin-right: auto; transform: translateX(-0px); border-left: 4px solid var(--primary-red); }
-			.card-right { margin-left: auto; transform: translateX(0px); border-right: 4px solid var(--primary-red); }
-			.status-header {
-			display: flex; align-items: center; margin-bottom: 15px;
-			font-weight: bold; font-size: 0.85rem; text-transform: uppercase;
-			}
-			.dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
-			.green-dot { background: #00ff00; box-shadow: 0 0 8px #00ff00; }
-			.red-dot { background: #ff0000; box-shadow: 0 0 8px #ff0000; }
-			.grid-layout {
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Intercalado (Esquerda / Direita) */
+		.card-left {
+			margin-right: auto;
+			transform: translateX(-0px);
+			border-left: 4px solid var(--primary-red);
+		}
+
+		.card-right {
+			margin-left: auto;
+			transform: translateX(0px);
+			border-right: 4px solid var(--primary-red);
+		}
+
+		.status-header {
+			display: flex;
+			align-items: center;
+			margin-bottom: 15px;
+			font-weight: bold;
+			font-size: 0.85rem;
+			text-transform: uppercase;
+		}
+
+		.dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			margin-right: 8px;
+		}
+
+		.green-dot {
+			background: #00ff00;
+			box-shadow: 0 0 8px #00ff00;
+		}
+
+		.red-dot {
+			background: #ff0000;
+			box-shadow: 0 0 8px #ff0000;
+		}
+
+		.grid-layout {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			gap: 12px;
-			}
-			/* Títulos com Leitura Perfeita */
-			.topic h4 {
+		}
+
+		/* Títulos com Leitura Perfeita */
+		.topic h4 {
 			color: #d0d0d0;
 			background: var(--header-bg);
 			margin: 0 0 4px 0;
@@ -123,39 +296,105 @@
 			border-bottom: 2px solid var(--primary-red);
 			display: inline-block;
 			width: 70%;
-			}
-			.item-list { list-style: none; padding: 0; margin: 0 0 10px 0; }
-			.item-link {
-			display: block; color: var(--text-gray); text-decoration: none;
-			font-size: 0.75rem; margin-bottom: 4px; cursor: help;
+		}
+
+		.item-list {
+			list-style: none;
+			padding: 0;
+			margin: 0 0 10px 0;
+		}
+
+		.item-link {
+			display: block;
+			color: var(--text-gray);
+			text-decoration: none;
+			font-size: 0.75rem;
+			margin-bottom: 4px;
+			cursor: help;
 			position: relative;
-			}
-			.item-link:hover { color: white; }
-			.item-link::before { content: '•'; margin-right: 5px; color: var(--primary-red); }
-			/* Tooltip Compacto */
-			.item-link:hover::after {
+		}
+
+		.item-link:hover {
+			color: white;
+		}
+
+		.item-link::before {
+			content: '•';
+			margin-right: 5px;
+			color: var(--primary-red);
+		}
+
+		/* Tooltip Compacto */
+		.item-link:hover::after {
 			content: attr(data-info);
-			position: absolute; left: 10px; bottom: 20px;
-			background: #222; color: #fff; padding: 8px;
-			border: 1px solid var(--primary-red); border-radius: 4px;
-			width: 160px; z-index: 100; font-size: 0.7rem;
+			position: absolute;
+			left: 10px;
+			bottom: 20px;
+			background: #222;
+			color: #fff;
+			padding: 8px;
+			border: 1px solid var(--primary-red);
+			border-radius: 4px;
+			width: 160px;
+			z-index: 100;
+			font-size: 0.7rem;
+		}
+
+		@media (max-width: 600px) {
+			.update-card {
+				width: 100%;
 			}
-			@media (max-width: 600px) {
-			.update-card { width: 100%; }
-			.grid-layout { grid-template-columns: 1fr; }
+
+			.grid-layout {
+				grid-template-columns: 1fr;
 			}
-			/* ===== BORDA ANIMADA SEGURA ===== */
-			.container {
+
+			.page-header {
+				grid-template-columns: 1fr;
+				justify-items: center;
+				text-align: center;
+				gap: 10px;
+			}
+
+			.page-header-spacer {
+				display: none;
+			}
+
+			.page-header .navbar-brand {
+				grid-column: 1;
+			}
+
+			.page-header>.btn-prev {
+				grid-column: 1;
+				justify-self: center;
+				max-width: 100%;
+			}
+
+			.navbar-logo {
+				height: auto;
+				max-height: 100px;
+			}
+
+			.page-header.is-scrolled .navbar-logo {
+				height: 80px;
+				max-height: 80px;
+			}
+		}
+
+		/* ===== BORDA ANIMADA SEGURA ===== */
+		.container {
 			border: 2px solid var(--primary-red);
 			border-radius: 10px;
 			background: url('fundo.png');
 			position: relative;
-			
+
 			max-height: 93vh;
-			overflow-y: auto; /* 🔥 ativa rolagem interna */
-			}
-			/* camada de energia */
-			.container::after {
+			overflow-y: auto;
+			/* 🔥 ativa rolagem interna */
+		}
+
+		/* camada de energia */
+		.container::after {
 			content: "";
 			position: sticky;
 			top: 0;
@@ -167,58 +406,66 @@
 			border-radius: 10px;
 			z-index: 0;
 			border: 2px solid transparent;
-			background: linear-gradient(
-			120deg,
-			transparent,
-			rgba(255,49,49,0.9),
-			transparent
-			) border-box;
+			background: linear-gradient(120deg,
+					transparent,
+					rgba(255, 49, 49, 0.9),
+					transparent) border-box;
 			background-size: 200% 200%;
 			-webkit-mask:
-			linear-gradient(#000 0 0) padding-box,
-			linear-gradient(#000 0 0);
+				linear-gradient(#000 0 0) padding-box,
+				linear-gradient(#000 0 0);
 			-webkit-mask-composite: xor;
 			mask-composite: exclude;
 			animation: bordaEnergia 3s linear infinite;
-			pointer-events: none; /* ESSENCIAL */
+			pointer-events: none;
+			/* ESSENCIAL */
+		}
+
+		/* animação */
+		@keyframes bordaEnergia {
+			from {
+				background-position: 0% 0%;
 			}
-			/* animação */
-			@keyframes bordaEnergia {
-			from { background-position: 0% 0%; }
-			to { background-position: 200% 0%; }
+
+			to {
+				background-position: 200% 0%;
 			}
-			/* IMAGEM FIXA NA TIMELINE */
-			.timeline-image {
+		}
+
+		/* IMAGEM FIXA NA TIMELINE */
+		.timeline-image {
 			position: absolute;
 			left: 50%;
-			transform: translateX(10px); /* joga pro lado direito */
+			transform: translateX(10px);
+			/* joga pro lado direito */
 			width: 350px;
 			z-index: 1;
 			pointer-events: none;
-			}
-			.timeline-image img {
+		}
+
+		.timeline-image img {
 			width: 100%;
 			opacity: 0.85;
 			filter: drop-shadow(0 0 12px red);
-			}
-			.container::-webkit-scrollbar {
-			width: 8px;
-			}
-			
-			.container::-webkit-scrollbar-thumb {
-			background: var(--primary-red);
-			border-radius: 4px;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="roadmap-popup">
-			<div class="container">
-				<span class="close-x" onclick="document.getElementById('roadmap-popup').style.display='none'">&times;</span>
-				<img src="logo muwarx.png" style="display:block; margin:0 auto ; height:200px;">
-				<h1 class="main-title">Roadmap</h1>
-				<div class="timeline">
-					<div class="update-card card-left">
+		}
+	</style>
+</head>
+
+<body>
+	<div id="roadmap-popup">
+		<div class="container">
+			<span class="close-x" onclick="document.getElementById('roadmap-popup').style.display='none'">&times;</span>
+			<div class="page-header" role="navigation" aria-label="MuWarX">
+				<span class="page-header-spacer" aria-hidden="true"></span>
+				<div class="navbar-brand">
+					<img class="navbar-logo" src="logo muwarx.png" alt="MuWarX">
+				</div>
+				<a class="btn-prev" href="https://www.muwarx.net/">Ir ao portal do servidor</a>
+			</div>
+			<div class="content">
+			<h1 class="main-title">Roadmap</h1>
+			<div class="timeline">
+				<div class="update-card card-left">
 					<div class="status-header"></span> <span style="color:#00ff00">SEASON 1: ERA ELEMENTAL</span></div>
 					<div class="grid-layout">
 						<div class="column">
@@ -233,7 +480,8 @@
 								<h4>EQUIPAMENTOS</h4>
 							</div>
 							<ul class="item-list">
-								<li><a class="item-link" data-info="Itens Season 1">Pentagramas / Brincos / Montaria</a></li>
+								<li><a class="item-link" data-info="Itens Season 1">Pentagramas / Brincos / Montaria</a>
+								</li>
 								<li><a class="item-link" data-info="Sistemas Mu">Artefatos / Muun / Ruud</a></li>
 							</ul>
 						</div>
@@ -249,8 +497,11 @@
 								<h4>BOSSES</h4>
 							</div>
 							<ul class="item-list">
-								<li><a class="item-link" data-info="Bosses Principais">Maya / Kundun / Medusa / Selupan / Chicken / Demon invocation / Evomon</a></li>
-								<li><a class="item-link" data-info="Bosses Altos">Archeron Elemental / Protector of Archeron / Core Magriffy / Ferea / Nix / God of Darkness / Lord Silvester</a></li>
+								<li><a class="item-link" data-info="Bosses Principais">Maya / Kundun / Medusa / Selupan
+										/ Chicken / Demon invocation / Evomon</a></li>
+								<li><a class="item-link" data-info="Bosses Altos">Archeron Elemental / Protector of
+										Archeron / Core Magriffy / Ferea / Nix / God of Darkness / Lord Silvester</a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -260,7 +511,8 @@
 					<img src="SM3.png">
 				</div>
 				<div class="update-card card-right">
-					<div class="status-header">  <span style="color:var(--primary-red)">UPDATE 1: ASCENSÃO ANGELICAL</span></div>
+					<div class="status-header"> <span style="color:var(--primary-red)">UPDATE 1: ASCENSÃO
+							ANGELICAL</span></div>
 					<div class="grid-layout">
 						<div class="column">
 							<div class="topic">
@@ -298,237 +550,262 @@
 							</div>
 							<ul class="item-list">
 								<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
-								
+
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="update-card card-left">
-				<div class="status-header"></span> <span style="color:var(--primary-red)">UPDATE 2: EXPANSÃO PROFUNDEZAS</span></div>
-				<div class="grid-layout">
-					<div class="column">
-						<div class="topic">
-							<h4>PROGRESSÃO</h4>
+					<div class="status-header"></span> <span style="color:var(--primary-red)">UPDATE 2: EXPANSÃO
+							PROFUNDEZAS</span></div>
+					<div class="grid-layout">
+						<div class="column">
+							<div class="topic">
+								<h4>PROGRESSÃO</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Wings Level 4">Wings Level 4</a></li>
+								<li><a class="item-link" data-info="Level Máximo: 900">Level Máximo: 1000</a></li>
+							</ul>
+							<div class="topic">
+								<h4>EQUIPAMENTOS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
+								<li><a class="item-link" data-info="Montarias">Montaria Fierce Lion</a></li>
+								<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
+							</ul>
+							<div class="topic">
+								<h4>MAPAS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Lvl 900 a 1000">Abyss 1, 2 e 3 e Scotch Canyon</a>
+								</li>
+							</ul>
 						</div>
-						<ul class="item-list">
-							<li><a class="item-link" data-info="Wings Level 4">Wings Level 4</a></li>
-							<li><a class="item-link" data-info="Level Máximo: 900">Level Máximo: 1000</a></li>
-						</ul>
-						<div class="topic">
-							<h4>EQUIPAMENTOS</h4>
+						<div class="column">
+							<div class="topic">
+								<h4>SETS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Ruud Tier 4">Awakening Soul Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 4">Awakening Soul Weapons</a></li>
+							</ul>
+							<div class="topic">
+								<h4>BOSSES</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
+
+							</ul>
 						</div>
-						<ul class="item-list">
-							<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
-							<li><a class="item-link" data-info="Montarias">Montaria Fierce Lion</a></li>
-							<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
-						</ul>
-						<div class="topic">
-							<h4>MAPAS</h4>
-						</div>
-						<ul class="item-list">
-							<li><a class="item-link" data-info="Lvl 900 a 1000">Abyss 1, 2 e 3 e Scotch Canyon</a></li>
-						</ul>
 					</div>
-					<div class="column">
-						<div class="topic">
-							<h4>SETS</h4>
+				</div>
+				<div class="update-card card-right">
+					<div class="status-header"></span> <span style="color:var(--primary-red)">UPDATE 3: DESPERTAR
+							ARCANO</span></div>
+					<div class="grid-layout">
+						<div class="column">
+							<div class="topic">
+								<h4>PROGRESSÃO</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Level Máximo: 900">Level Máximo: 1100</a></li>
+							</ul>
+							<div class="topic">
+								<h4>EQUIPAMENTOS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
+								<li><a class="item-link" data-info="Montarias">Montaria Shining Tail</a></li>
+								<li><a class="item-link" data-info="Muuns">Novos Artefatos</a></li>
+								<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
+							</ul>
+							<div class="topic">
+								<h4>MAPAS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Lvl 1050 a 1100">Icarus Flame e Temple of Arnil</a>
+								</li>
+							</ul>
 						</div>
-						<ul class="item-list">
-							<li><a class="item-link" data-info="Ruud Tier 4">Awakening Soul Set</a></li>
-							<li><a class="item-link" data-info="Ruud Tier 4">Awakening Soul Weapons</a></li>
-						</ul>
-						<div class="topic">
-							<h4>BOSSES</h4>
+						<div class="column">
+							<div class="topic">
+								<h4>SETS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Ruud Tier 4">Blue Eye Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 4">Blue Eye Weapons</a></li>
+							</ul>
+							<div class="topic">
+								<h4>BOSSES</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
+
+							</ul>
 						</div>
-						<ul class="item-list">
-							<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
-							
-						</ul>
+					</div>
+				</div>
+				<div class="update-card card-left">
+					<div class="status-header"></span> <span style="color:var(--primary-red)">UPDATE 4: DOMÍNIO
+							SUPREMO</span></div>
+					<div class="grid-layout">
+						<div class="column">
+							<div class="topic">
+								<h4>PROGRESSÃO</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Level Máximo: 1200">Level Máximo: 1200</a></li>
+							</ul>
+							<div class="topic">
+								<h4>EQUIPAMENTOS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
+								<li><a class="item-link" data-info="Montarias">Montaria Urll</a></li>
+								<li><a class="item-link" data-info="Muuns">Novos Artefatos</a></li>
+								<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
+							</ul>
+							<div class="topic">
+								<h4>MAPAS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Lvl 1150 a 1200">Gray Aida e Old Kethotum</a></li>
+							</ul>
+						</div>
+						<div class="column">
+							<div class="topic">
+								<h4>SETS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Ruud Tier 5">Silver Heart Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 5">Silver Heart Weapon</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 6">Manticore Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 6">Manticore Weapon</a></li>
+							</ul>
+							<div class="topic">
+								<h4>BOSSES</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="update-card card-right">
+					<div class="status-header"><span class="dot red-dot"></span> <span
+							style="color:var(--primary-red)">UPDATE 5: PODER ABSOLUTO</span></div>
+					<div class="grid-layout">
+						<div class="column">
+							<div class="topic">
+								<h4>PROGRESSÃO</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Wings Level 5">Wings Level 5</a></li>
+								<li><a class="item-link" data-info="Level Máximo: 1300">Level Máximo: 1300</a></li>
+							</ul>
+							<div class="topic">
+								<h4>EQUIPAMENTOS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
+								<li><a class="item-link" data-info="Montarias">Montaria Leviathan</a></li>
+								<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
+							</ul>
+							<div class="topic">
+								<h4>MAPAS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Lvl 1250">Kanturu Underground</a></li>
+							</ul>
+						</div>
+						<div class="column">
+							<div class="topic">
+								<h4>SETS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Ruud Tier 7">Silver Heart Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 7">Silver Heart Weapon</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 8">Manticore Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 8">Manticore Weapon</a></li>
+							</ul>
+							<div class="topic">
+								<h4>BOSSES</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="update-card card-left">
+					<div class="status-header"><span class="dot red-dot"></span> <span
+							style="color:var(--primary-red)">EM BREVE: UPDATES 6, 7 E 8</span></div>
+					<div class="grid-layout">
+						<div class="column">
+							<div class="topic">
+								<h4>PROGRESSÃO</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Level Máximo: XXXX">Novos levels máximos</a></li>
+							</ul>
+							<div class="topic">
+								<h4>EQUIPAMENTOS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
+								<li><a class="item-link" data-info="Montarias">Montaria Tauros</a></li>
+								<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
+							</ul>
+							<div class="topic">
+								<h4>MAPAS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="De 1250 a 1700">Novas regiões exclusivas</a></li>
+							</ul>
+						</div>
+						<div class="column">
+							<div class="topic">
+								<h4>SETS</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Ruud Tier 9">Lightning Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 9">Lightning Weapon</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 10">Temple Guard Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 10">Temple Guard Weapon</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 11">Imperial Set</a></li>
+								<li><a class="item-link" data-info="Ruud Tier 11">Imperial Weapon</a></li>
+							</ul>
+							<div class="topic">
+								<h4>BOSSES</h4>
+							</div>
+							<ul class="item-list">
+								<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="update-card card-right">
-			<div class="status-header"></span> <span style="color:var(--primary-red)">UPDATE 3: DESPERTAR ARCANO</span></div>
-			<div class="grid-layout">
-				<div class="column">
-					<div class="topic">
-						<h4>PROGRESSÃO</h4>
-					</div>
-					<ul class="item-list">
-						<li><a class="item-link" data-info="Level Máximo: 900">Level Máximo: 1100</a></li>
-					</ul>
-					<div class="topic">
-						<h4>EQUIPAMENTOS</h4>
-					</div>
-					<ul class="item-list">
-						<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
-						<li><a class="item-link" data-info="Montarias">Montaria Shining Tail</a></li>
-						<li><a class="item-link" data-info="Muuns">Novos Artefatos</a></li>
-						<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
-					</ul>
-					<div class="topic">
-						<h4>MAPAS</h4>
-					</div>
-					<ul class="item-list">
-						<li><a class="item-link" data-info="Lvl 1050 a 1100">Icarus Flame e Temple of Arnil</a></li>
-					</ul>
-				</div>
-				<div class="column">
-					<div class="topic">
-						<h4>SETS</h4>
-					</div>
-					<ul class="item-list">
-						<li><a class="item-link" data-info="Ruud Tier 4">Blue Eye Set</a></li>
-						<li><a class="item-link" data-info="Ruud Tier 4">Blue Eye Weapons</a></li>
-					</ul>
-					<div class="topic">
-						<h4>BOSSES</h4>
-					</div>
-					<ul class="item-list">
-						<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
-						
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="update-card card-left">
-		<div class="status-header"></span> <span style="color:var(--primary-red)">UPDATE 4: DOMÍNIO SUPREMO</span></div>
-		<div class="grid-layout">
-			<div class="column">
-				<div class="topic">
-					<h4>PROGRESSÃO</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Level Máximo: 1200">Level Máximo: 1200</a></li>
-				</ul>
-				<div class="topic">
-					<h4>EQUIPAMENTOS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
-					<li><a class="item-link" data-info="Montarias">Montaria Urll</a></li>
-					<li><a class="item-link" data-info="Muuns">Novos Artefatos</a></li>
-					<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
-				</ul>
-				<div class="topic">
-					<h4>MAPAS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Lvl 1150 a 1200">Gray Aida e Old Kethotum</a></li>
-				</ul>
-			</div>
-			<div class="column">
-				<div class="topic">
-					<h4>SETS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Ruud Tier 5">Silver Heart Set</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 5">Silver Heart Weapon</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 6">Manticore Set</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 6">Manticore Weapon</a></li>
-				</ul>
-				<div class="topic">
-					<h4>BOSSES</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
-				</ul>
 			</div>
 		</div>
 	</div>
-	<div class="update-card card-right">
-		<div class="status-header"><span class="dot red-dot"></span> <span style="color:var(--primary-red)">UPDATE 5: PODER ABSOLUTO</span></div>
-		<div class="grid-layout">
-			<div class="column">
-				<div class="topic">
-					<h4>PROGRESSÃO</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Wings Level 5">Wings Level 5</a></li>
-					<li><a class="item-link" data-info="Level Máximo: 1300">Level Máximo: 1300</a></li>
-				</ul>
-				<div class="topic">
-					<h4>EQUIPAMENTOS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
-					<li><a class="item-link" data-info="Montarias">Montaria Leviathan</a></li>
-					<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
-				</ul>
-				<div class="topic">
-					<h4>MAPAS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Lvl 1250">Kanturu Underground</a></li>
-				</ul>
-			</div>
-			<div class="column">
-				<div class="topic">
-					<h4>SETS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Ruud Tier 7">Silver Heart Set</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 7">Silver Heart Weapon</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 8">Manticore Set</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 8">Manticore Weapon</a></li>
-				</ul>
-				<div class="topic">
-					<h4>BOSSES</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="update-card card-left">
-		<div class="status-header"><span class="dot red-dot"></span> <span style="color:var(--primary-red)">EM BREVE: UPDATES 6, 7 E 8</span></div>
-		<div class="grid-layout">
-			<div class="column">
-				<div class="topic">
-					<h4>PROGRESSÃO</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Level Máximo: XXXX">Novos levels máximos</a></li>
-				</ul>
-				<div class="topic">
-					<h4>EQUIPAMENTOS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Montarias">Novos brincos</a></li>
-					<li><a class="item-link" data-info="Montarias">Montaria Tauros</a></li>
-					<li><a class="item-link" data-info="Muuns">Novos Muun</a></li>
-				</ul>
-				<div class="topic">
-					<h4>MAPAS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="De 1250 a 1700">Novas regiões exclusivas</a></li>
-				</ul>
-			</div>
-			<div class="column">
-				<div class="topic">
-					<h4>SETS</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Ruud Tier 9">Lightning Set</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 9">Lightning Weapon</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 10">Temple Guard Set</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 10">Temple Guard Weapon</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 11">Imperial Set</a></li>
-					<li><a class="item-link" data-info="Ruud Tier 11">Imperial Weapon</a></li>
-				</ul>
-				<div class="topic">
-					<h4>BOSSES</h4>
-				</div>
-				<ul class="item-list">
-					<li><a class="item-link" data-info="Novos Bosses">Novos Bosses</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-</div>
+	<script>
+		(function () {
+			var container = document.querySelector('.container');
+			var popup = document.getElementById('roadmap-popup');
+			var header = document.querySelector('.page-header');
+			if (!container || !header) return;
+			function syncScrollHeader() {
+				var y1 = container.scrollTop;
+				var y2 = popup ? popup.scrollTop : 0;
+				header.classList.toggle('is-scrolled', y1 > 4 || y2 > 4);
+			}
+			container.addEventListener('scroll', syncScrollHeader, { passive: true });
+			if (popup) popup.addEventListener('scroll', syncScrollHeader, { passive: true });
+			syncScrollHeader();
+		})();
+	</script>
 </body>
+
 </html>
