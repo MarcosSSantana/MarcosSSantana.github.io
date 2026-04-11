@@ -99,6 +99,25 @@
 			margin: 0;
 		}
 
+		@keyframes portalLivePulse {
+
+			0%,
+			100% {
+				border-color: var(--border-red);
+				box-shadow:
+					inset 0 1px 0 rgba(255, 255, 255, 0.04),
+					0 0 0 rgba(255, 49, 49, 0);
+			}
+
+			50% {
+				border-color: rgba(255, 73, 73, 0.95);
+				box-shadow:
+					inset 0 1px 0 rgba(255, 255, 255, 0.07),
+					0 0 10px 1px rgba(255, 49, 49, 0.65),
+					0 0 22px 4px rgba(255, 49, 49, 0.35);
+			}
+		}
+
 		.btn-prev {
 			display: inline-flex;
 			align-items: center;
@@ -115,14 +134,25 @@
 			background: linear-gradient(180deg, #1c1818, #121010);
 			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 			text-decoration: none;
-			transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+			transition: color 0.2s ease, background 0.2s ease;
+			animation: portalLivePulse 2s ease-in-out infinite;
 		}
 
 		.btn-prev:hover {
+			animation-play-state: paused;
 			color: #fff;
 			border-color: var(--primary-red);
 			background: linear-gradient(180deg, #221818, #161010);
-			box-shadow: 0 0 12px rgba(255, 49, 49, 0.25);
+			box-shadow:
+				inset 0 1px 0 rgba(255, 255, 255, 0.05),
+				0 0 14px 2px rgba(255, 49, 49, 0.45);
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.btn-prev {
+				animation: none;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+			}
 		}
 
 		.navbar-logo {
