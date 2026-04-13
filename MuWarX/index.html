@@ -260,6 +260,12 @@
 			cursor: pointer;
 			z-index: 10001;
 			line-height: 1;
+			text-decoration: none;
+		}
+
+		.close-x:hover {
+			color: var(--primary-red);
+			text-shadow: 0 0 12px rgba(255, 49, 49, 0.6);
 		}
 
 		/* Estrutura de Cards Compactos */
@@ -498,13 +504,13 @@
 <body>
 	<div id="roadmap-popup">
 		<div class="container">
-			<span class="close-x" onclick="document.getElementById('roadmap-popup').style.display='none'">&times;</span>
+			<a class="close-x" href="https://www.muwarx.net/index.php" aria-label="Ir ao portal do servidor">&times;</a>
 			<div class="page-header" role="banner">
 				<div class="navbar-brand">
 					<img class="navbar-logo" src="img/logo muwarx.png" alt="MuWarX">
 				</div>
 				<h1 class="main-title">Roadmap</h1>
-				<a class="btn-prev" href="https://www.muwarx.net/">Ir ao portal do servidor</a>
+				<a class="btn-prev" href="https://www.muwarx.net/index.php">Ir ao portal do servidor</a>
 			</div>
 			<div class="content">
 			<div class="timeline">
